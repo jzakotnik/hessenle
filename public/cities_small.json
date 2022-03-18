@@ -1,34 +1,39 @@
 {
     "cities": [
         {
+            "id": 1,
             "name": "Allendorf (Lumda)",
-            "lng": "51.2",
-            "lat": "10.2",
-            "image": "city77.jpg"
+            "lng": "50.6768146",
+            "lat": "8.7867471",
+            "image": "allendorf.jpg"
         },
         {
+            "id": 2,
             "name": "Eltville am Rhein",
-            "lng": "52.2",
-            "lat": "10.2",
-            "image": "city77.jpg"
+            "lng": "50.0501299",
+            "lat": "8.0103464",
+            "image": "eltville.jpg"
         },
         {
-            "name": "Hadamar",
-            "lng": "53.2",
-            "lat": "10.2",
-            "image": "city77.jpg"
+            "id": 3,
+            "name": "Kronberg im Taunus",
+            "lng": "50.1994314",
+            "lat": "8.3218639",
+            "image": "kronbergimtaunus.jpg"
         },
         {
+            "id": 4,
             "name": "Lampertheim",
-            "lng": "54.2",
-            "lat": "10.2",
-            "image": "city77.jpg"
+            "lng": "49.6256543",
+            "lat": "8.3399162",
+            "image": "lampertheim.jpg"
         },
         {
+            "id": 5,
             "name": "Ober-Ramstadt",
-            "lng": "55.2",
-            "lat": "10.2",
-            "image": "city77.jpg"
+            "lng": "49.8192326",
+            "lat": "8.6760669",
+            "image": "oberramstadt.jpg"
         }
     ]
 }

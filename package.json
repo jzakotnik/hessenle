@@ -1,7 +1,7 @@
 {
   "name": "hessenle",
   "version": "0.1.0",
-  "homepage": "https://jzakotnik.github.io",
+  "homepage": "https://jzakotnik.github.io/hessenle",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.8.2",

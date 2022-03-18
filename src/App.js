@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import moment from "moment";
 import { getDistance } from "geolib";
 
-const citiesListFile = "./cities_small.json";
+const citiesListFile = process.env.PUBLIC_URL + "/cities_small.json";
 
 function Copyright(props) {
   return (
@@ -39,7 +39,8 @@ const theme = createTheme();
 export default function Quiz() {
   const [cities, setCities] = useState(["Kronberg im Taunus"]);
   const [distance, setDistance] = useState(0.0);
-  const [todaysCity, setTodaysCity] = useState(null);
+  const [selectedCity, setSelectedCity] = useState("");
+  const [todaysCity, setTodaysCity] = useState("loading.gif");
 
   useEffect(() => {
     const dayOfYear = moment().dayOfYear();
@@ -69,12 +70,18 @@ export default function Quiz() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //console.log("Handled guess...", event);
-    console.log("Todays City: ", todaysCity.lat);
+    console.log("Handled guess...", event);
+    console.log("Todays City: ", todaysCity);
+    console.log("Selected city", selectedCity);
+    const selectedCityData = cities.filter((c) => c.id === selectedCity);
+    console.log("Selected city data, ", selectedCityData[0]);
     const dist = Math.floor(
       getDistance(
         { latitude: todaysCity.lat, longitude: todaysCity.lng },
-        { latitude: todaysCity.lat, longitude: todaysCity.lng }
+        {
+          latitude: selectedCityData[0].lat,
+          longitude: selectedCityData[0].lng,
+        }
       ) / 1000
     );
     setDistance(dist);
@@ -115,17 +122,27 @@ export default function Quiz() {
               <LocationOnIcon />
             </Avatar>
             <Box>
-              <img src="/cityImages/city77.jpg" height="200" alt="City image" />
+              <img
+                src={process.env.PUBLIC_URL + "/cityImages/" + todaysCity.image}
+                height="200"
+              />
             </Box>
             <Typography component="h1" variant="h5">
               Wo bin ich in Hessen?
             </Typography>
             <Box sx={{ mt: 1 }}>
               <Autocomplete
-                freeSolo
+                clearOnEscape
                 id="city-autocomplete"
                 disableClearable
-                options={cities.map(({ name }) => name)}
+                onChange={(event, newValue) => {
+                  setSelectedCity(newValue.id); //use the ID of the city name
+                }}
+                options={cities.map((option) => ({
+                  id: option.id,
+                  key: option.id,
+                  label: option.name,
+                }))}
                 renderInput={(params) => (
                   <TextField
                     {...params}

@@ -13,6 +13,9 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import moment from "moment";
+import { getDistance } from "geolib";
+
+const citiesListFile = "./cities_small.json";
 
 function Copyright(props) {
   return (
@@ -35,17 +38,29 @@ const theme = createTheme();
 
 export default function Quiz() {
   const [cities, setCities] = useState(["Kronberg im Taunus"]);
-  const [dayOfYear, setDayOfYear] = useState(0);
+  const [distance, setDistance] = useState(0.0);
+  const [todaysCity, setTodaysCity] = useState(null);
 
   useEffect(() => {
-    setDayOfYear(moment().dayOfYear());
-    fetch("./cities.json")
+    const dayOfYear = moment().dayOfYear();
+    /*setDistance(
+      Math.floor(
+        getDistance(
+          { latitude: 51.5103, longitude: 7.49347 },
+          { latitude: 55.5103, longitude: 6.49347 }
+        ) / 1000
+      )
+    );*/
+    fetch(citiesListFile)
       .then(function (res) {
         return res.json();
       })
       .then(function (data) {
         console.log(data);
         setCities(data.cities);
+        const nrCities = data.cities.length;
+        const city = data.cities[dayOfYear % nrCities];
+        setTodaysCity(city);
       })
       .catch(function (err) {
         console.log(err, " error");
@@ -54,7 +69,16 @@ export default function Quiz() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Handled guess...", event);
+    //console.log("Handled guess...", event);
+    console.log("Todays City: ", todaysCity.lat);
+    const dist = Math.floor(
+      getDistance(
+        { latitude: todaysCity.lat, longitude: todaysCity.lng },
+        { latitude: todaysCity.lat, longitude: todaysCity.lng }
+      ) / 1000
+    );
+    setDistance(dist);
+    console.log("Distance: ", dist);
   };
 
   return (
@@ -101,7 +125,7 @@ export default function Quiz() {
                 freeSolo
                 id="city-autocomplete"
                 disableClearable
-                options={cities}
+                options={cities.map(({ name }) => name)}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -123,7 +147,9 @@ export default function Quiz() {
                 Das ist es!
               </Button>
               <Grid container>
-                <Grid item xs></Grid>
+                <Grid item xs>
+                  Distanz: {distance} Kilometer
+                </Grid>
                 <Grid item></Grid>
               </Grid>
               <Copyright sx={{ mt: 5 }} />

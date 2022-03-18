@@ -7,16 +7,28 @@
             "image": "city77.jpg"
         },
         {
-            "name": "Eltville am Rhein"
+            "name": "Eltville am Rhein",
+            "lng": "52.2",
+            "lat": "10.2",
+            "image": "city77.jpg"
         },
         {
-            "name": "Hadamar"
+            "name": "Hadamar",
+            "lng": "53.2",
+            "lat": "10.2",
+            "image": "city77.jpg"
         },
         {
-            "name": "Lampertheim"
+            "name": "Lampertheim",
+            "lng": "54.2",
+            "lat": "10.2",
+            "image": "city77.jpg"
         },
         {
-            "name": "Ober-Ramstadt"
-        },
+            "name": "Ober-Ramstadt",
+            "lng": "55.2",
+            "lat": "10.2",
+            "image": "city77.jpg"
+        }
     ]
 }

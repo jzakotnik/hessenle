@@ -96,12 +96,7 @@ export default function Quiz() {
             <Typography component="h1" variant="h5">
               Wo bin ich in Hessen?
             </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
-            >
+            <Box sx={{ mt: 1 }}>
               <Autocomplete
                 freeSolo
                 id="city-autocomplete"
@@ -120,7 +115,7 @@ export default function Quiz() {
                 )}
               />
               <Button
-                type="submit"
+                onClick={handleSubmit}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}

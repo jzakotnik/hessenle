@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import moment from "moment";
-import { getDistance } from "geolib";
+import { getDistance, getCompassDirection, getRhumbLineBearing } from "geolib";
 
 const citiesListFile = process.env.PUBLIC_URL + "/cities_small.json";
 
@@ -39,6 +39,7 @@ const theme = createTheme();
 export default function Quiz() {
   const [cities, setCities] = useState(["Kronberg im Taunus"]);
   const [distance, setDistance] = useState(0.0);
+  const [bearing, setBearing] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [todaysCity, setTodaysCity] = useState("loading.gif");
 
@@ -84,8 +85,16 @@ export default function Quiz() {
         }
       ) / 1000
     );
+    const bear = getCompassDirection(
+      { latitude: todaysCity.lat, longitude: todaysCity.lng },
+      {
+        latitude: selectedCityData[0].lat,
+        longitude: selectedCityData[0].lng,
+      }
+    );
     setDistance(dist);
-    console.log("Distance: ", dist);
+    setBearing(bear);
+    console.log("Distance, Bearing: ", dist, bear);
   };
 
   return (
@@ -118,19 +127,18 @@ export default function Quiz() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LocationOnIcon />
-            </Avatar>
+            <Box>
+              <Typography component="h1" variant="h5">
+                Wo bin ich in Hessen?
+              </Typography>{" "}
+            </Box>
             <Box>
               <img
                 src={process.env.PUBLIC_URL + "/cityImages/" + todaysCity.image}
                 height="200"
               />
             </Box>
-            <Typography component="h1" variant="h5">
-              Wo bin ich in Hessen?
-            </Typography>
-            <Box sx={{ mt: 1 }}>
+            <Box sx={{ mt: 1, width: "100%" }}>
               <Autocomplete
                 clearOnEscape
                 id="city-autocomplete"
@@ -156,6 +164,7 @@ export default function Quiz() {
                 )}
               />
               <Button
+                startIcon={<LocationOnIcon />}
                 onClick={handleSubmit}
                 fullWidth
                 variant="contained"
@@ -165,7 +174,7 @@ export default function Quiz() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  Distanz: {distance} Kilometer
+                  Distanz: {distance} Kilometer {bearing}
                 </Grid>
                 <Grid item></Grid>
               </Grid>

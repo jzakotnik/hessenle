@@ -16,8 +16,10 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import moment from "moment";
-import { getDistance, getCompassDirection, getRhumbLineBearing } from "geolib";
-import { DangerousRounded } from "@mui/icons-material";
+import { getDistance, getCompassDirection } from "geolib";
+
+import translateCompass from "./lib/translateCompass";
+import { ShareButton } from "./components/shareButton";
 
 const citiesListFile = process.env.PUBLIC_URL + "/cities_small.json";
 
@@ -139,7 +141,7 @@ export default function Quiz() {
       }
     );
     setDistance(dist);
-    setBearing(bear);
+    setBearing(translateCompass(bear));
 
     const newGuessContent = guessData.guessContent;
     if (dist > 1) {
@@ -232,12 +234,13 @@ export default function Quiz() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Das ist es!
-              </Button>{" "}
+                Meinen Tipp abgeben..
+              </Button>
+
               <Score guessData={guessData} />
               <Grid container>
                 <Grid item xs>
-                  Distanz: {distance} Kilometer {bearing}
+                  Distanz zum Ziel: {distance} Kilometer {bearing}
                 </Grid>
                 <Grid item></Grid>
               </Grid>

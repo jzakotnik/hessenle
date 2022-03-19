@@ -9,11 +9,15 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import DangerousIcon from "@mui/icons-material/Dangerous";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import moment from "moment";
 import { getDistance, getCompassDirection, getRhumbLineBearing } from "geolib";
+import { DangerousRounded } from "@mui/icons-material";
 
 const citiesListFile = process.env.PUBLIC_URL + "/cities_small.json";
 
@@ -36,13 +40,54 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+function GuessIcon({ guessContent }) {
+  if (guessContent === "open") return <HelpOutlineIcon />;
+  if (guessContent === "wrong") return <DangerousIcon />;
+  if (guessContent === "correct") return <ThumbUpAltIcon />;
+}
+
+function Score({ guessData }) {
+  console.log("Guess Data, ", guessData);
+  return (
+    <Grid
+      container
+      direction="row"
+      justifyContent="space-between"
+      alignItems="center"
+      spacing={{ xs: 2, md: 2 }}
+    >
+      <Grid item>
+        <GuessIcon guessContent={guessData.guessContent[0]} />
+      </Grid>
+      <Grid item>
+        <GuessIcon guessContent={guessData.guessContent[1]} />
+      </Grid>
+      <Grid item>
+        <GuessIcon guessContent={guessData.guessContent[2]} />
+      </Grid>
+      <Grid item>
+        <GuessIcon guessContent={guessData.guessContent[3]} />
+      </Grid>
+      <Grid item>
+        <GuessIcon guessContent={guessData.guessContent[4]} />
+      </Grid>
+      <Grid item>
+        <GuessIcon guessContent={guessData.guessContent[5]} />
+      </Grid>
+    </Grid>
+  );
+}
+
 export default function Quiz() {
   const [cities, setCities] = useState(["Kronberg im Taunus"]);
   const [distance, setDistance] = useState(0.0);
   const [bearing, setBearing] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [todaysCity, setTodaysCity] = useState("loading.gif");
-
+  const [guessData, setGuessData] = useState({
+    guessNumber: 0,
+    guessContent: ["open", "open", "open", "open", "open", "open"],
+  });
   useEffect(() => {
     const dayOfYear = moment().dayOfYear();
     /*setDistance(
@@ -94,6 +139,20 @@ export default function Quiz() {
     );
     setDistance(dist);
     setBearing(bear);
+
+    const newGuessContent = guessData.guessContent;
+    if (dist > 1) {
+      newGuessContent[guessData.guessNumber] = "wrong";
+    } else {
+      newGuessContent[guessData.guessNumber] = "correct";
+    }
+    const newGuessData = {
+      guessNumber: guessData.guessNumber + 1,
+      guessContent: newGuessContent,
+    };
+
+    setGuessData(newGuessData);
+
     console.log("Distance, Bearing: ", dist, bear);
   };
 
@@ -171,7 +230,8 @@ export default function Quiz() {
                 sx={{ mt: 3, mb: 2 }}
               >
                 Das ist es!
-              </Button>
+              </Button>{" "}
+              <Score guessData={guessData} />
               <Grid container>
                 <Grid item xs>
                   Distanz: {distance} Kilometer {bearing}

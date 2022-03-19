@@ -84,6 +84,7 @@ export default function Quiz() {
   const [bearing, setBearing] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [todaysCity, setTodaysCity] = useState("loading.gif");
+  const [submitPossible, setSubmitPossible] = useState(false);
   const [guessData, setGuessData] = useState({
     guessNumber: 0,
     guessContent: ["open", "open", "open", "open", "open", "open"],
@@ -203,6 +204,7 @@ export default function Quiz() {
                 id="city-autocomplete"
                 disableClearable
                 onChange={(event, newValue) => {
+                  setSubmitPossible(true);
                   setSelectedCity(newValue.id); //use the ID of the city name
                 }}
                 options={cities.map((option) => ({
@@ -225,6 +227,7 @@ export default function Quiz() {
               <Button
                 startIcon={<LocationOnIcon />}
                 onClick={handleSubmit}
+                disabled={!submitPossible}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}

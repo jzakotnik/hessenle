@@ -8,50 +8,42 @@ const parser = new UAParser();
 const browser = parser.getBrowser();
 const device = parser.getDevice();
 
-const attemptShare = (shareData) => {
-  return (
-    // Deliberately exclude Firefox Mobile, because its Web Share API isn't working correctly
-    browser.name?.toUpperCase().indexOf("FIREFOX") === -1 &&
-    webShareApiDeviceTypes.indexOf(device.type ?? "") !== -1 &&
-    navigator.canShare &&
-    navigator.canShare(shareData) &&
-    navigator.share
-  );
-};
+const canonical = document.querySelector("link[rel=canonical]");
+let url = canonical ? canonical.href : document.location.href;
+const shareDetails = { url, title: "Hessenle.de", text: "Tag 23" };
 
-const handleShare = (handleShareToClipboard: () => void) => {
-  const textToShare = "hallo share";
-
-  const shareData = { text: textToShare };
-
-  let shareSuccess = false;
-
-  try {
-    if (attemptShare(shareData)) {
-      navigator.share(shareData);
-      shareSuccess = true;
+const handleSharing = async () => {
+  if (navigator.share) {
+    try {
+      await navigator
+        .share(shareDetails)
+        .then(() =>
+          console.log("Hooray! Your content was shared to tha world")
+        );
+    } catch (error) {
+      console.log(`Oops! I couldn't share to the world because: ${error}`);
     }
-  } catch (error) {
-    shareSuccess = false;
-  }
-
-  if (!shareSuccess) {
-    navigator.clipboard.writeText(textToShare);
-    handleShareToClipboard();
+  } else {
+    // fallback code
+    console.log(
+      "Web share is currently not supported on this browser. Please provide a callback"
+    );
   }
 };
 
 export function ShareButton(props) {
-  return (
-    <Button
-      startIcon={<ShareIcon />}
-      onClick={handleShare}
-      disabled={false}
-      fullWidth
-      variant="contained"
-      sx={{ mt: 3, mb: 2 }}
-    >
-      Teilen
-    </Button>
-  );
+  if (props.enabled) {
+    return (
+      <Button
+        startIcon={<ShareIcon />}
+        onClick={handleSharing}
+        disabled={false}
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+      >
+        Teilen
+      </Button>
+    );
+  } else return <div></div>;
 }

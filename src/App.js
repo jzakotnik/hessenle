@@ -236,6 +236,7 @@ export default function Quiz() {
               >
                 Meinen Tipp abgeben..
               </Button>
+              <ShareButton enabled={true} />
 
               <Score guessData={guessData} />
               <Grid container>

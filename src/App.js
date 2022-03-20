@@ -31,11 +31,11 @@ function Copyright(props) {
       align="center"
       {...props}
     >
+      {" "}
+      Made with ❤️ by Jure,
       <Link color="inherit" href="https://github.com/jzakotnik/hessenle">
-        Impressum: Hessenle Github
+        Impressum: Github
       </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
     </Typography>
   );
 }
@@ -43,9 +43,9 @@ function Copyright(props) {
 const theme = createTheme();
 
 function GuessIcon({ guessContent }) {
-  if (guessContent === "open") return <HelpOutlineIcon />;
-  if (guessContent === "wrong") return <DangerousIcon />;
-  if (guessContent === "correct") return <ThumbUpAltIcon />;
+  if (guessContent === "open") return <HelpOutlineIcon color="primary" />;
+  if (guessContent === "wrong") return <DangerousIcon color="secondary" />;
+  if (guessContent === "correct") return <ThumbUpAltIcon color="success" />;
 }
 
 function Score({ guessData }) {
@@ -81,6 +81,7 @@ function Score({ guessData }) {
 }
 
 export default function Quiz() {
+  const [gameOpen, setGameOpen] = useState(true);
   const [cities, setCities] = useState(["Kronberg im Taunus"]);
   const [distance, setDistance] = useState(0.0);
   const [bearing, setBearing] = useState("");
@@ -148,15 +149,37 @@ export default function Quiz() {
       newGuessContent[guessData.guessNumber] = "wrong";
     } else {
       newGuessContent[guessData.guessNumber] = "correct";
+      setGameOpen(false);
     }
+    const newGuessNumber = guessData.guessNumber + 1;
+    if (newGuessNumber > 5) setGameOpen(false);
     const newGuessData = {
-      guessNumber: guessData.guessNumber + 1,
+      guessNumber: newGuessNumber,
       guessContent: newGuessContent,
     };
 
     setGuessData(newGuessData);
 
     console.log("Distance, Bearing: ", dist, bear);
+  };
+
+  const ConditionalButton = ({ gameOpen }) => {
+    if (gameOpen) {
+      return (
+        <Button
+          startIcon={<LocationOnIcon />}
+          onClick={handleSubmit}
+          disabled={!submitPossible}
+          fullWidth
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+        >
+          Meinen Tipp abgeben..
+        </Button>
+      );
+    } else {
+      return <ShareButton guessData={guessData} enabled={true} />;
+    }
   };
 
   return (
@@ -226,17 +249,7 @@ export default function Quiz() {
                   />
                 )}
               />
-              <Button
-                startIcon={<LocationOnIcon />}
-                onClick={handleSubmit}
-                disabled={!submitPossible}
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Meinen Tipp abgeben..
-              </Button>
-              <ShareButton enabled={true} />
+              <ConditionalButton gameOpen={gameOpen} />
 
               <Score guessData={guessData} />
               <Grid container>

@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
 import ShareIcon from "@mui/icons-material/Share";
+import moment from "moment";
 
 //import { UAParser } from "ua-parser-js";
 
@@ -10,10 +11,36 @@ import ShareIcon from "@mui/icons-material/Share";
 
 const canonical = document.querySelector("link[rel=canonical]");
 let url = canonical ? canonical.href : document.location.href;
-const shareDetails = { url, title: "Hessenle.de", text: "Tag 23" };
+
+const getEmojiTiles = (isDarkMode, isHighContrastMode) => {
+  let tiles = [];
+  tiles.push(isHighContrastMode ? "🟧" : "🟩");
+  tiles.push(isHighContrastMode ? "🟦" : "🟨");
+  tiles.push(isDarkMode ? "⬛" : "⬜");
+  return tiles;
+};
+
+function createEmojiGrid(guessContent) {
+  const emojiArray = guessContent.map((g) => {
+    if (g === "open") return "🟨";
+    if (g === "wrong") return "🟧";
+    if (g === "correct") return "🟩";
+  });
+  console.log("Emoji Array composed: ", emojiArray);
+  const dayOfYear = moment().dayOfYear();
+  const resultString =
+    "Hessenle Quiz " + dayOfYear + ": \n" + emojiArray + "\n";
+
+  return resultString;
+}
 
 const handleSharing = async (guessData) => {
   console.log("Sharing game result ", guessData);
+  const shareDetails = {
+    url,
+    title: "Hessenle.de",
+    text: createEmojiGrid(guessData.guessContent),
+  };
   if (navigator.share) {
     try {
       await navigator
@@ -37,7 +64,7 @@ export function ShareButton({ enabled, guessData }) {
     return (
       <Button
         startIcon={<ShareIcon />}
-        onClick={handleSharing}
+        onClick={() => handleSharing(guessData)}
         disabled={false}
         fullWidth
         variant="contained"

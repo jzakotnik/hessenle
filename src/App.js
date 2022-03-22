@@ -12,6 +12,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import DangerousIcon from "@mui/icons-material/Dangerous";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -91,7 +92,9 @@ export default function Quiz() {
   const [guessData, setGuessData] = useState({
     guessNumber: 0,
     guessContent: ["open", "open", "open", "open", "open", "open"],
+    guessResult: [],
   });
+  const [showMap, setShowMap] = useState(false);
   useEffect(() => {
     const dayOfYear = moment().dayOfYear();
     /*setDistance(
@@ -145,8 +148,10 @@ export default function Quiz() {
     setBearing(translateCompass(bear));
 
     const newGuessContent = guessData.guessContent;
+    const newGuessResult = guessData.guessResult;
     if (dist > 1) {
       newGuessContent[guessData.guessNumber] = "wrong";
+      newGuessResult[guessData.guessNumber] = {"selectedCity":selectedCityData[0].name,"bearing":translateCompass(bear),"distance": dist};
     } else {
       newGuessContent[guessData.guessNumber] = "correct";
       setGameOpen(false);
@@ -156,12 +161,20 @@ export default function Quiz() {
     const newGuessData = {
       guessNumber: newGuessNumber,
       guessContent: newGuessContent,
+      guessResult: newGuessResult,
     };
 
     setGuessData(newGuessData);
 
     console.log("Distance, Bearing: ", dist, bear);
   };
+
+  const changeMap = () => {
+    if (showMap) 
+      setShowMap(false);
+    else 
+      setShowMap(true); 
+  }
 
   const ConditionalButton = ({ gameOpen }) => {
     if (gameOpen) {
@@ -184,13 +197,13 @@ export default function Quiz() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container component="main" sx={{ height: "100vh", justifyContent:"center" }}>
         <CssBaseline />
         <Grid
           item
           xs={false}
-          sm={4}
-          md={7}
+          sm={showMap ? 4 : false}
+          md={showMap ? 6 : false}
           sx={{
             backgroundImage: "url(./hessen-background.jpg)",
             backgroundRepeat: "no-repeat",
@@ -202,7 +215,10 @@ export default function Quiz() {
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square alignSelf={"center"}>
+        <Button variant="outlined" startIcon={<ChevronLeftIcon />} onClick={changeMap}>
+          Karte
+        </Button>
           <Box
             sx={{
               my: 8,
@@ -220,7 +236,7 @@ export default function Quiz() {
             <Box>
               <img
                 src={process.env.PUBLIC_URL + "/cityImages/" + todaysCity.image}
-                height="200"
+                width="100%"
               />
             </Box>
             <Box sx={{ mt: 1, width: "100%" }}>
@@ -254,7 +270,13 @@ export default function Quiz() {
               <Score guessData={guessData} />
               <Grid container>
                 <Grid item xs>
-                  Distanz zum Ziel: {distance} Kilometer {bearing}
+                  <div>
+                    {guessData.guessResult[0] ? 
+                      guessData.guessResult.map((result, index) => (
+                        <div key={index}>{index+1}. {result.selectedCity} - Distanz zum Ziel: {result.distance}km nach {result.bearing}</div>
+                     ))
+                    : null}
+                  </div>
                 </Grid>
                 <Grid item></Grid>
               </Grid>

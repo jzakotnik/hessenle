@@ -5,203 +5,203 @@
             "lat": 49.59972670000001,
             "lng": 8.466599,
             "id": 0,
-            "image": "placeholder.jpg"
+            "image": "lampertheim.jpg"
         },
         {
             "name": "Haiger",
             "lat": 50.7412021,
             "lng": 8.206550499999999,
             "id": 1,
-            "image": "placeholder.jpg"
+            "image": "haiger.jpg"
         },
         {
             "name": "Eppstein",
             "lat": 50.14529599999999,
             "lng": 8.3881459,
             "id": 2,
-            "image": "placeholder.jpg"
+            "image": "eppstein.jpg"
         },
         {
             "name": "Alsfeld",
             "lat": 50.750828,
             "lng": 9.2691602,
             "id": 3,
-            "image": "placeholder.jpg"
+            "image": "alsfeld.jpg"
         },
         {
             "name": "Amöneburg",
             "lat": 50.797725,
             "lng": 8.9219942,
             "id": 4,
-            "image": "placeholder.jpg"
+            "image": "amoeneburg.jpg"
         },
         {
             "name": "Solms",
             "lat": 50.5519629,
             "lng": 8.4165038,
             "id": 5,
-            "image": "placeholder.jpg"
+            "image": "solms.jpg"
         },
         {
             "name": "Langenselbold",
             "lat": 50.1795159,
             "lng": 9.0400136,
             "id": 6,
-            "image": "placeholder.jpg"
+            "image": "langenselbold.jpg"
         },
         {
             "name": "Seligenstadt",
             "lat": 50.0437013,
             "lng": 8.9711343,
             "id": 7,
-            "image": "placeholder.jpg"
+            "image": "seligenstadt.jpg"
         },
         {
             "name": "Obertshausen",
             "lat": 50.075119,
             "lng": 8.8572969,
             "id": 8,
-            "image": "placeholder.jpg"
+            "image": "obertshausen.jpg"
         },
         {
             "name": "Erbach",
             "lat": 49.6558833,
             "lng": 8.9961444,
             "id": 9,
-            "image": "placeholder.jpg"
+            "image": "erbach.jpg"
         },
         {
             "name": "Langen",
             "lat": 49.99146630000001,
             "lng": 8.6634007,
             "id": 10,
-            "image": "placeholder.jpg"
+            "image": "langen.jpg"
         },
         {
             "name": "Lollar",
             "lat": 50.6470102,
             "lng": 8.7036303,
             "id": 11,
-            "image": "placeholder.jpg"
+            "image": "lollar.jpg"
         },
         {
             "name": "Hofgeismar",
             "lat": 51.4970925,
             "lng": 9.3860472,
             "id": 12,
-            "image": "placeholder.jpg"
+            "image": "hofgeismar.jpg"
         },
         {
             "name": "Frankenberg (Eder)",
             "lat": 51.057117,
             "lng": 8.8043709,
             "id": 13,
-            "image": "placeholder.jpg"
+            "image": "frankenberg.jpg"
         },
         {
             "name": "Oberursel (Taunus)",
             "lat": 50.2025478,
             "lng": 8.5770309,
             "id": 14,
-            "image": "placeholder.jpg"
+            "image": "oberursel.jpg"
         },
         {
             "name": "Borken (Hessen)",
             "lat": 51.0518467,
             "lng": 9.2813226,
             "id": 15,
-            "image": "placeholder.jpg"
+            "image": "borken.jpg"
         },
         {
             "name": "Ortenberg",
             "lat": 50.3555576,
             "lng": 9.0490159,
             "id": 16,
-            "image": "placeholder.jpg"
+            "image": "ortenberg.jpg"
         },
         {
             "name": "Friedberg (Hessen)",
             "lat": 50.3308526,
             "lng": 8.7510993,
             "id": 17,
-            "image": "placeholder.jpg"
+            "image": "friedberg.jpg"
         },
         {
             "name": "Rotenburg a.d. Fulda",
             "lat": 50.9995571,
             "lng": 9.7309388,
             "id": 18,
-            "image": "placeholder.jpg"
+            "image": "rotenburg.jpg"
         },
         {
             "name": "Biedenkopf",
             "lat": 50.9121507,
             "lng": 8.5301232,
             "id": 19,
-            "image": "placeholder.jpg"
+            "image": "biedenkopf.jpg"
         },
         {
             "name": "Wiesbaden",
             "lat": 50.0782184,
             "lng": 8.239760799999999,
             "id": 20,
-            "image": "placeholder.jpg"
+            "image": "wiesbaden.jpg"
         },
         {
             "name": "Trendelburg",
             "lat": 51.5738886,
             "lng": 9.4205694,
             "id": 21,
-            "image": "placeholder.jpg"
+            "image": "trendelburg.jpg"
         },
         {
             "name": "Ober-Ramstadt",
             "lat": 49.8312192,
             "lng": 8.7450072,
             "id": 22,
-            "image": "placeholder.jpg"
+            "image": "oberramstadt.jpg"
         },
         {
             "name": "Eltville am Rhein",
             "lat": 50.0289744,
             "lng": 8.119173,
             "id": 23,
-            "image": "placeholder.jpg"
+            "image": "eltville.jpg"
         },
         {
             "name": "Staufenberg",
             "lat": 50.6604624,
             "lng": 8.7362272,
             "id": 24,
-            "image": "placeholder.jpg"
+            "image": "staufenberg.jpg"
         },
         {
             "name": "Erlensee",
             "lat": 50.1638866,
             "lng": 8.9840001,
             "id": 25,
-            "image": "placeholder.jpg"
+            "image": "erlensee.jpg"
         },
         {
             "name": "Aßlar",
             "lat": 50.5895427,
             "lng": 8.466855899999999,
             "id": 26,
-            "image": "placeholder.jpg"
+            "image": "asslar.jpg"
         },
         {
             "name": "Hattersheim am Main",
             "lat": 50.0695728,
             "lng": 8.487226699999999,
             "id": 27,
-            "image": "placeholder.jpg"
+            "image": "hattersheim.jpg"
         },
         {
             "name": "Laubach",
             "lat": 50.5434524,
             "lng": 8.9867837,
             "id": 28,
-            "image": "placeholder.jpg"
+            "image": "laubach.jpg"
         },
         {
             "name": "Babenhausen",

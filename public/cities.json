@@ -418,245 +418,245 @@
             "lat": 50.3493544,
             "lng": 9.5255493,
             "id": 59,
-            "image": "placeholder.jpg"
+            "image": "schluechtern.jpg"
         },
         {
             "name": "Wetter (Hessen)",
             "lat": 50.9025347,
             "lng": 8.7225229,
             "id": 60,
-            "image": "placeholder.jpg"
+            "image": "wetter.jpg"
         },
         {
             "name": "Kirtorf",
             "lat": 50.7688674,
             "lng": 9.1051944,
             "id": 61,
-            "image": "placeholder.jpg"
+            "image": "kirtorf.jpg"
         },
         {
             "name": "Neu-Anspach",
             "lat": 50.2961543,
             "lng": 8.498942099999999,
             "id": 62,
-            "image": "placeholder.jpg"
+            "image": "neuanspach.jpg"
         },
         {
             "name": "Weilburg",
             "lat": 50.4859255,
             "lng": 8.2722569,
             "id": 63,
-            "image": "placeholder.jpg"
+            "image": "weilburg.jpg"
         },
         {
             "name": "Bürstadt",
             "lat": 49.6441767,
             "lng": 8.4617953,
             "id": 64,
-            "image": "placeholder.jpg"
+            "image": "buerstadt.jpg"
         },
         {
             "name": "Griesheim",
             "lat": 49.86142599999999,
             "lng": 8.567644099999999,
             "id": 65,
-            "image": "placeholder.jpg"
+            "image": "griesheim.jpg"
         },
         {
             "name": "Königstein im Taunus",
             "lat": 50.17874,
             "lng": 8.47191,
             "id": 66,
-            "image": "placeholder.jpg"
+            "image": "koenigstein.jpg"
         },
         {
             "name": "Neustadt (Hessen)",
             "lat": 50.8525599,
             "lng": 9.115319999999999,
             "id": 67,
-            "image": "placeholder.jpg"
+            "image": "neustadt.jpg"
         },
         {
             "name": "Gemünden (Wohra)",
             "lat": 50.9727111,
             "lng": 8.969381,
             "id": 68,
-            "image": "placeholder.jpg"
+            "image": "gemuenden.jpg"
         },
         {
             "name": "Vellmar",
             "lat": 51.3576785,
             "lng": 9.4651587,
             "id": 69,
-            "image": "placeholder.jpg"
+            "image": "vellmar.jpg"
         },
         {
             "name": "Marburg",
             "lat": 50.8018843,
             "lng": 8.7657677,
             "id": 70,
-            "image": "placeholder.jpg"
+            "image": "marburg.jpg"
         },
         {
             "name": "Nidda",
             "lat": 50.4127451,
             "lng": 9.007875799999999,
             "id": 71,
-            "image": "placeholder.jpg"
+            "image": "nidda.jpg"
         },
         {
             "name": "Gelnhausen",
             "lat": 50.2045664,
             "lng": 9.1863725,
             "id": 72,
-            "image": "placeholder.jpg"
+            "image": "gelnhausen.jpg"
         },
         {
             "name": "Bad Sooden-Allendorf",
             "lat": 51.2703403,
             "lng": 9.980095700000001,
             "id": 73,
-            "image": "placeholder.jpg"
+            "image": "badsoodenallendorf.jpg"
         },
         {
             "name": "Viernheim",
             "lat": 49.5412437,
             "lng": 8.5784877,
             "id": 74,
-            "image": "placeholder.jpg"
+            "image": "viernheim.jpg"
         },
         {
             "name": "Idstein",
             "lat": 50.2171726,
             "lng": 8.265894,
             "id": 75,
-            "image": "placeholder.jpg"
+            "image": "idstein.jpg"
         },
         {
             "name": "Korbach",
             "lat": 51.2774069,
             "lng": 8.8709876,
             "id": 76,
-            "image": "placeholder.jpg"
+            "image": "korbach.jpg"
         },
         {
             "name": "Gießen",
             "lat": 50.5840512,
             "lng": 8.678403099999999,
             "id": 77,
-            "image": "placeholder.jpg"
+            "image": "giessen.jpg"
         },
         {
             "name": "Heppenheim (Bergstraße)",
             "lat": 49.6430169,
             "lng": 8.6675419,
             "id": 78,
-            "image": "placeholder.jpg"
+            "image": "heppenheim.jpg"
         },
         {
             "name": "Neckarsteinach",
             "lat": 49.4054511,
             "lng": 8.841741200000001,
             "id": 79,
-            "image": "placeholder.jpg"
+            "image": "neckarsteinach.jpg"
         },
         {
             "name": "Oestrich-Winkel",
             "lat": 50.0030906,
             "lng": 8.0152247,
             "id": 80,
-            "image": "placeholder.jpg"
+            "image": "oestrichwinkel.jpg"
         },
         {
             "name": "Wächtersbach",
             "lat": 50.2550222,
             "lng": 9.2918865,
             "id": 81,
-            "image": "placeholder.jpg"
+            "image": "waechtersbach.jpg"
         },
         {
             "name": "Wanfried",
             "lat": 51.1815,
             "lng": 10.173811,
             "id": 82,
-            "image": "placeholder.jpg"
+            "image": "wanfried.jpg"
         },
         {
             "name": "Bad Homburg v.d. Höhe",
             "lat": 50.2284412,
             "lng": 8.617754999999999,
             "id": 83,
-            "image": "placeholder.jpg"
+            "image": "badhomburg.jpg"
         },
         {
             "name": "Offenbach am Main",
             "lat": 50.09563620000001,
             "lng": 8.776084299999999,
             "id": 84,
-            "image": "placeholder.jpg"
+            "image": "offenbach.jpg"
         },
         {
             "name": "Pohlheim",
             "lat": 50.50832150000001,
             "lng": 8.7246052,
             "id": 85,
-            "image": "placeholder.jpg"
+            "image": "pohlheim.jpg"
         },
         {
             "name": "Heusenstamm",
             "lat": 50.0554864,
             "lng": 8.7999301,
             "id": 86,
-            "image": "placeholder.jpg"
+            "image": "heusenstamm.jpg"
         },
         {
             "name": "Runkel",
             "lat": 50.4053547,
             "lng": 8.153041199999999,
             "id": 87,
-            "image": "placeholder.jpg"
+            "image": "runkel.jpg"
         },
         {
             "name": "Karben",
             "lat": 50.2303566,
             "lng": 8.7736533,
             "id": 88,
-            "image": "placeholder.jpg"
+            "image": "karben.jpg"
         },
         {
             "name": "Schwalbach am Taunus",
             "lat": 50.1541966,
             "lng": 8.5288048,
             "id": 89,
-            "image": "placeholder.jpg"
+            "image": "schwalbachtaunus.jpg"
         },
         {
             "name": "Leun",
             "lat": 50.5454362,
             "lng": 8.3620748,
             "id": 90,
-            "image": "placeholder.jpg"
+            "image": "leun.jpg"
         },
         {
             "name": "Gernsheim",
             "lat": 49.7574082,
             "lng": 8.4885231,
             "id": 91,
-            "image": "placeholder.jpg"
+            "image": "gernsheim.jpg"
         },
         {
             "name": "Linden",
             "lat": 50.5268808,
             "lng": 8.654294799999999,
             "id": 92,
-            "image": "placeholder.jpg"
+            "image": "linden.jpg"
         },
         {
             "name": "Limburg a.d. Lahn",
             "lat": 50.3986005,
             "lng": 8.0795783,
             "id": 93,
-            "image": "placeholder.jpg"
+            "image": "limburg.jpg"
         },
         {
             "name": "Großalmerode",

@@ -215,7 +215,7 @@ export default function Quiz() {
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square alignSelf={"center"}>
+        <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
         <Button variant="outlined" startIcon={<ChevronLeftIcon />} onClick={changeMap}>
           Karte
         </Button>

@@ -21,7 +21,7 @@ import { getDistance, getCompassDirection } from "geolib";
 import translateCompass from "./lib/translateCompass";
 import { ShareButton } from "./components/shareButton";
 
-const citiesListFile = process.env.PUBLIC_URL + "/cities_small.json";
+const citiesListFile = process.env.PUBLIC_URL + "/cities.json";
 
 function Copyright(props) {
   return (

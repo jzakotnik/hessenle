@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -33,7 +32,7 @@ function Copyright(props) {
       {...props}
     >
       {" "}
-      Made with ❤️ by Ingmar and Jure,
+      Made with ❤️ by Ingmar and Jure.{" "}
       <Link color="inherit" href="https://github.com/jzakotnik/hessenle">
         Impressum
       </Link>{" "}
@@ -101,6 +100,9 @@ export default function Quiz() {
     guessResult: [],
   });
   const [showMap, setShowMap] = useState(false);
+  const [showHint, setShowHint] = useState(false);
+  const congratulations = ['Grandios erkannt','Grandios erkannt','Gut angenähert','Gut angenähert','Besser spät als nie :)','Versuche es morgen wieder!'];
+
   useEffect(() => {
     const dayOfYear = moment().dayOfYear();
     /*setDistance(
@@ -129,8 +131,8 @@ export default function Quiz() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Handled guess...", event);
-    console.log("Todays City: ", todaysCity);
+    //console.log("Handled guess...", event);
+    //console.log("Todays City: ", todaysCity);
     console.log("Selected city", selectedCity);
     const selectedCityData = cities.filter((c) => c.id === selectedCity);
     console.log("Selected city data, ", selectedCityData[0]);
@@ -152,12 +154,14 @@ export default function Quiz() {
     );
     setDistance(dist);
     setBearing(translateCompass(bear));
+    setShowHint(false);
 
     const newGuessContent = guessData.guessContent;
     const newGuessResult = guessData.guessResult;
     if (dist > 1) {
       newGuessContent[guessData.guessNumber] = "wrong";
       newGuessResult[guessData.guessNumber] = {
+        selectedCityId: selectedCity,
         selectedCity: selectedCityData[0].name,
         bearing: translateCompass(bear),
         distance: dist,
@@ -177,11 +181,6 @@ export default function Quiz() {
     setGuessData(newGuessData);
 
     console.log("Distance, Bearing: ", dist, bear);
-  };
-
-  const changeMap = () => {
-    if (showMap) setShowMap(false);
-    else setShowMap(true);
   };
 
   const ConditionalButton = ({ gameOpen }) => {
@@ -214,8 +213,8 @@ export default function Quiz() {
         <Grid
           item
           xs={false}
-          sm={showMap ? 4 : false}
-          md={showMap ? 6 : false}
+          md={showMap ? 4 : false}
+          lg={showMap ? 6 : false}
           sx={{
             backgroundImage: "url(./hessen-background.jpg)",
             backgroundRepeat: "no-repeat",
@@ -223,42 +222,77 @@ export default function Quiz() {
               t.palette.mode === "light"
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
-            backgroundSize: "cover",
+            backgroundSize: "99%",
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
+                <Grid
+          item
+          xs={12}
+          sm={12}
+          sx={{
+            position: "absolute",
+            zIndex: showMap ? 10:-1,
+            display: { md: 'none', xs: 'block' },
+            width: "100%",
+            top: 50,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            cursor: "pointer",
+            justifyContent: "center",
+          }}
+        >
+                  {showMap ?
+          <img
+                src="./hessen-background.jpg"
+                width="100%"
+                alt="Karte von Hessen"
+                onClick ={() => setShowMap(!showMap)}
+              />
+              : null }
+        </Grid>
+        <Grid item xs={12} md={8} lg={6} component={Paper} elevation={6} square>
           <Button
             variant="outlined"
             startIcon={<ChevronLeftIcon />}
-            onClick={changeMap}
+            onClick ={() => setShowMap(!showMap)}
           >
-            Karte
+          Karte {showMap ? `schliessen` : null} 
           </Button>
           <Box
             sx={{
-              my: 8,
+              my: 4,
               mx: 4,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
-            <Box>
+            <Box
+              sx={{
+                my: 2,
+              }}
+            >
               <Typography component="h1" variant="h5">
                 Wo bin ich in Hessen?
               </Typography>{" "}
             </Box>
-            <Box>
+            <Box
+              sx={{
+                mb: 2,
+              }}
+            >
               <img
                 src={process.env.PUBLIC_URL + "/cityImages/" + todaysCity.image}
                 width="100%"
                 alt="Bild der heutigen Stadt"
               />
-              {guessData.guessNumber === 6
+              {guessData.guessNumber === 6 || guessData.guessContent[guessData.guessNumber-1] === 'correct'
                       ? 
-                      <Typography component="h1" variant="h5" align="center">
-                            Lösung: Das ist {todaysCity.name}
+                      <Typography component="h1" variant="h5" color="text.secondary" align="center">
+                            {congratulations[guessData.guessNumber-1]}
+                            {" - "}Das ist <Link href={'https://de.wikipedia.org/wiki/' + todaysCity.name} target="_blank">{todaysCity.name}</Link>
                       </Typography>
               : null}
             </Box>
@@ -275,7 +309,7 @@ export default function Quiz() {
                   id: option.id,
                   key: option.id,
                   label: option.name,
-                }))}
+                })).sort((a, b) => a.label > b.label ? 1: -1)}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -292,15 +326,37 @@ export default function Quiz() {
 
               <Score guessData={guessData} />
               <Grid container>
-                <Grid item xs>
+                <Grid item >
+                <Typography
+                    variant="body2"
+                    color="text.secondary"
+                  >
                     {guessData.guessResult[0]
                       ? guessData.guessResult.map((result, index) => (
                           <div key={index}>
-                            {index + 1}. {result.selectedCity} - Distanz zum
-                            Ziel: {result.distance}km nach {result.bearing}
+                            {index + 1}.Tipp: {" "}
+                            <b>{result.selectedCity}</b>
+                            <HelpOutlineIcon sx={{ fontSize: 15 }} onClick={()=> setShowHint(true)} /> {" "}
+                            Noch {result.distance}km nach {result.bearing} 
+                            
                           </div>
                         ))
                       : null}
+                    </Typography>
+                </Grid>
+                <Grid item sx={{ mt: 3 }}>
+                    <Typography
+                    variant="body2"
+                    align="center"
+                    color="text.secondary"
+                    >
+                      {showHint && guessData.guessContent[guessData.guessNumber -1] === "wrong" &&
+                        <Box>             
+                          <div>Das ist {guessData.guessResult[guessData.guessNumber -1].selectedCity}</div> 
+                          <img src={process.env.PUBLIC_URL + "/cityImages/" + cities[guessData.guessResult[guessData.guessNumber -1].selectedCityId].image} alt="Deine Stadt" width="50%" align="center" />
+                        </Box> 
+                      }
+                    </Typography>
                 </Grid>
                 <Grid item></Grid>
               </Grid>

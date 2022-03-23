@@ -1,37 +1,48 @@
+import {
+  ArrowUpCircle,
+  ArrowLeftCircle,
+  ArrowRightCircle,
+  ArrowDownCircle,
+  ArrowDownRightCircle,
+  ArrowDownLeftCircle,
+  ArrowUpRightCircle,
+  ArrowUpLeftCircle,
+} from "react-bootstrap-icons";
+
 export default function translateCompass(direction) {
   const dir = direction;
   switch (dir) {
     case "NNE":
-      return "Nord-Ost";
+      return <ArrowUpRightCircle />;
     case "NE":
-      return "Nord-Ost";
+      return <ArrowUpRightCircle />;
     case "ENE":
-      return "Nord-Ost";
+      return <ArrowUpRightCircle />;
     case "E":
-      return "Ost";
+      return <ArrowRightCircle />;
     case "ESE":
-      return "Süd-Ost";
+      return <ArrowDownRightCircle />;
     case "SE":
-      return "Süd-Ost";
+      return <ArrowDownRightCircle />;
     case "SSE":
-      return "Süd-Ost";
+      return <ArrowDownRightCircle />;
     case "S":
-      return "Süd";
+      return <ArrowDownCircle />;
     case "SSW":
-      return "Süd-West";
+      return <ArrowDownLeftCircle />;
     case "SW":
-      return "Süd-West";
+      return <ArrowDownLeftCircle />;
     case "WSW":
-      return "Süd-West";
+      return <ArrowDownLeftCircle />;
     case "W":
-      return "West";
+      return <ArrowLeftCircle />;
     case "WNW":
-      return "Nord-West";
+      return <ArrowUpLeftCircle />;
     case "NW":
-      return "Nord-West";
+      return <ArrowUpLeftCircle />;
     case "NNW":
-      return "Nord-West";
+      return <ArrowUpLeftCircle />;
     default:
-      return "Nord";
+      return <ArrowUpCircle />;
   }
 }

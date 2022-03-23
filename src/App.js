@@ -245,8 +245,8 @@ export default function Quiz() {
             }}
           >
             <Box>
-              <Typography component="h1" variant="h5">
-                Wo bin ich in Hessen?
+              <Typography component="h3" variant="h5">
+                Wo bin ich heute in Hessen?
               </Typography>{" "}
             </Box>
             <Box>
@@ -255,12 +255,11 @@ export default function Quiz() {
                 width="100%"
                 alt="Bild der heutigen Stadt"
               />
-              {guessData.guessNumber === 6
-                      ? 
-                      <Typography component="h1" variant="h5" align="center">
-                            Lösung: Das ist {todaysCity.name}
-                      </Typography>
-              : null}
+              {guessData.guessNumber === 6 ? (
+                <Typography component="h1" variant="h5" align="center">
+                  Lösung: Das ist {todaysCity.name}
+                </Typography>
+              ) : null}
             </Box>
             <Box sx={{ mt: 1, width: "100%" }}>
               <Autocomplete
@@ -293,14 +292,14 @@ export default function Quiz() {
               <Score guessData={guessData} />
               <Grid container>
                 <Grid item xs>
-                    {guessData.guessResult[0]
-                      ? guessData.guessResult.map((result, index) => (
-                          <div key={index}>
-                            {index + 1}. {result.selectedCity} - Distanz zum
-                            Ziel: {result.distance}km nach {result.bearing}
-                          </div>
-                        ))
-                      : null}
+                  {guessData.guessResult[0]
+                    ? guessData.guessResult.map((result, index) => (
+                        <div key={index}>
+                          {index + 1}. {result.selectedCity} - Distanz zum Ziel:{" "}
+                          {result.distance}km nach {result.bearing}
+                        </div>
+                      ))
+                    : null}
                 </Grid>
                 <Grid item></Grid>
               </Grid>

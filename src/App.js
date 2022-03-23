@@ -253,7 +253,14 @@ export default function Quiz() {
               <img
                 src={process.env.PUBLIC_URL + "/cityImages/" + todaysCity.image}
                 width="100%"
+                alt="Bild der heutigen Stadt"
               />
+              {guessData.guessNumber === 6
+                      ? 
+                      <Typography component="h1" variant="h5" align="center">
+                            Lösung: Das ist {todaysCity.name}
+                      </Typography>
+              : null}
             </Box>
             <Box sx={{ mt: 1, width: "100%" }}>
               <Autocomplete
@@ -286,7 +293,6 @@ export default function Quiz() {
               <Score guessData={guessData} />
               <Grid container>
                 <Grid item xs>
-                  <div>
                     {guessData.guessResult[0]
                       ? guessData.guessResult.map((result, index) => (
                           <div key={index}>
@@ -295,7 +301,6 @@ export default function Quiz() {
                           </div>
                         ))
                       : null}
-                  </div>
                 </Grid>
                 <Grid item></Grid>
               </Grid>

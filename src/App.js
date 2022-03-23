@@ -274,8 +274,8 @@ export default function Quiz() {
                 my: 2,
               }}
             >
-              <Typography component="h1" variant="h5">
-                Wo bin ich in Hessen?
+              <Typography component="h3" variant="h5">
+                Wo bin ich heute in Hessen?
               </Typography>{" "}
             </Box>
             <Box
@@ -290,7 +290,7 @@ export default function Quiz() {
               />
               {guessData.guessNumber === 6 || guessData.guessContent[guessData.guessNumber-1] === 'correct'
                       ? 
-                      <Typography component="h1" variant="h5" color="text.secondary" align="center">
+                      <Typography component="h3" variant="h5" color="text.secondary" align="center">
                             {congratulations[guessData.guessNumber-1]}
                             {" - "}Das ist <Link href={'https://de.wikipedia.org/wiki/' + todaysCity.name} target="_blank">{todaysCity.name}</Link>
                       </Typography>

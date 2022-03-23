@@ -663,49 +663,49 @@
             "lat": 51.2587473,
             "lng": 9.786006,
             "id": 94,
-            "image": "placeholder.jpg"
+            "image": "grossalmerode.jpg"
         },
         {
             "name": "Kelkheim (Taunus)",
             "lat": 50.13489000000001,
             "lng": 8.45121,
             "id": 95,
-            "image": "placeholder.jpg"
+            "image": "kelkheim.jpg"
         },
         {
             "name": "Hirschhorn (Neckar)",
             "lat": 49.4466583,
             "lng": 8.8971213,
             "id": 96,
-            "image": "placeholder.jpg"
+            "image": "hirschhorn.jpg"
         },
         {
             "name": "Frankenau",
             "lat": 51.092755,
             "lng": 8.933304399999999,
             "id": 97,
-            "image": "placeholder.jpg"
+            "image": "frankenau.jpg"
         },
         {
             "name": "Wetzlar",
             "lat": 50.5635273,
             "lng": 8.5002611,
             "id": 98,
-            "image": "placeholder.jpg"
+            "image": "wetzlar.jpg"
         },
         {
             "name": "Bensheim",
             "lat": 49.6861354,
             "lng": 8.618729600000002,
             "id": 99,
-            "image": "placeholder.jpg"
+            "image": "bensheim.jpg"
         },
         {
             "name": "Neukirchen",
             "lat": 50.8691184,
             "lng": 9.3437631,
             "id": 100,
-            "image": "placeholder.jpg"
+            "image": "neukirchen.jpg"
         },
         {
             "name": "Schotten",
@@ -719,630 +719,623 @@
             "lat": 50.3203904,
             "lng": 8.8665959,
             "id": 102,
-            "image": "placeholder.jpg"
+            "image": "florstadt.jpg"
         },
         {
             "name": "Rosbach v.d. Höhe",
             "lat": 50.3007398,
             "lng": 8.692732699999999,
             "id": 103,
-            "image": "placeholder.jpg"
+            "image": "rosbach.jpg"
         },
         {
             "name": "Ulrichstein",
             "lat": 50.5760021,
             "lng": 9.1929424,
             "id": 104,
-            "image": "placeholder.jpg"
+            "image": "ulrichstein.jpg"
         },
         {
             "name": "Lich",
             "lat": 50.518161,
             "lng": 8.816677499999999,
             "id": 105,
-            "image": "placeholder.jpg"
+            "image": "lich.jpg"
         },
         {
             "name": "Kelsterbach",
             "lat": 50.0597078,
             "lng": 8.5297786,
             "id": 106,
-            "image": "placeholder.jpg"
+            "image": "kelsterbach.jpg"
         },
         {
             "name": "Rauschenberg",
             "lat": 50.8835784,
             "lng": 8.9147455,
             "id": 107,
-            "image": "placeholder.jpg"
+            "image": "rauschenberg.jpg"
         },
         {
             "name": "Büdingen",
             "lat": 50.2862963,
             "lng": 9.111383799999999,
             "id": 108,
-            "image": "placeholder.jpg"
+            "image": "buedingen.jpg"
         },
         {
             "name": "Bad Arolsen",
             "lat": 51.3798641,
             "lng": 9.012550599999999,
             "id": 109,
-            "image": "placeholder.jpg"
+            "image": "badarolsen.jpg"
         },
         {
             "name": "Raunheim",
             "lat": 50.0104109,
             "lng": 8.4529177,
             "id": 110,
-            "image": "placeholder.jpg"
+            "image": "raunheim.jpg"
         },
         {
             "name": "Taunusstein",
             "lat": 50.1396151,
             "lng": 8.149593900000001,
             "id": 111,
-            "image": "placeholder.jpg"
+            "image": "taunusstein.jpg"
         },
         {
             "name": "Herborn",
             "lat": 50.6784088,
             "lng": 8.2997096,
             "id": 112,
-            "image": "placeholder.jpg"
+            "image": "herborn.jpg"
         },
         {
             "name": "Frankfurt am Main",
             "lat": 50.1109221,
             "lng": 8.6821267,
             "id": 113,
-            "image": "placeholder.jpg"
+            "image": "frankfurt.jpg"
         },
         {
             "name": "Flörsheim am Main",
             "lat": 50.01239959999999,
             "lng": 8.4217125,
             "id": 114,
-            "image": "placeholder.jpg"
+            "image": "floersheim.jpg"
         },
         {
             "name": "Bad König",
             "lat": 49.7436186,
             "lng": 9.0064931,
             "id": 115,
-            "image": "placeholder.jpg"
+            "image": "badkoenig.jpg"
         },
         {
             "name": "Schwarzenborn",
             "lat": 50.9114395,
             "lng": 9.4473376,
             "id": 116,
-            "image": "placeholder.jpg"
+            "image": "schwarzenborn.jpg"
         },
         {
             "name": "Darmstadt",
             "lat": 49.8728253,
             "lng": 8.6511929,
             "id": 117,
-            "image": "placeholder.jpg"
+            "image": "darmstadt.jpg"
         },
         {
             "name": "Lichtenau",
             "lat": 51.1982109,
             "lng": 9.719786599999999,
             "id": 118,
-            "image": "placeholder.jpg"
+            "image": "lichtenau.jpg"
         },
         {
             "name": "Herbstein",
             "lat": 50.5616639,
             "lng": 9.3476778,
             "id": 119,
-            "image": "placeholder.jpg"
+            "image": "herbstein.jpg"
         },
         {
             "name": "Bad Wildungen",
             "lat": 51.1178991,
             "lng": 9.1219134,
             "id": 120,
-            "image": "placeholder.jpg"
+            "image": "badwildungen.jpg"
         },
         {
             "name": "Naumburg",
             "lat": 51.2482221,
             "lng": 9.167672099999999,
             "id": 121,
-            "image": "placeholder.jpg"
+            "image": "naumburg.jpg"
         },
         {
             "name": "Usingen",
             "lat": 50.3353122,
             "lng": 8.5320064,
             "id": 122,
-            "image": "placeholder.jpg"
+            "image": "usingen.jpg"
         },
         {
             "name": "Waldkappel",
             "lat": 51.14568269999999,
             "lng": 9.877246699999999,
             "id": 123,
-            "image": "placeholder.jpg"
+            "image": "waldkappel.jpg"
         },
         {
             "name": "Homberg (Efze)",
             "lat": 51.0314351,
             "lng": 9.4127239,
             "id": 124,
-            "image": "placeholder.jpg"
+            "image": "hombergefze.jpg"
         },
         {
             "name": "Steinau an der Straße",
             "lat": 50.3166763,
             "lng": 9.4512418,
             "id": 125,
-            "image": "placeholder.jpg"
+            "image": "steinau.jpg"
         },
         {
             "name": "Reinheim",
             "lat": 49.8285844,
             "lng": 8.831097399999999,
             "id": 126,
-            "image": "placeholder.jpg"
+            "image": "reinheim.jpg"
         },
         {
             "name": "Gladenbach",
             "lat": 50.7647016,
             "lng": 8.5778368,
             "id": 127,
-            "image": "placeholder.jpg"
+            "image": "gladenbach.jpg"
         },
         {
             "name": "Bad Camberg",
             "lat": 50.2982625,
             "lng": 8.265035899999999,
             "id": 128,
-            "image": "placeholder.jpg"
+            "image": "badcamberg.jpg"
         },
         {
             "name": "Hünfeld",
             "lat": 50.6726672,
             "lng": 9.769045499999999,
             "id": 129,
-            "image": "placeholder.jpg"
+            "image": "huenfeld.jpg"
         },
         {
             "name": "Bad Soden am Taunus",
             "lat": 50.1461462,
             "lng": 8.498569,
             "id": 130,
-            "image": "placeholder.jpg"
+            "image": "badsoden.jpg"
         },
         {
             "name": "Hochheim am Main",
             "lat": 50.0147576,
             "lng": 8.3558664,
             "id": 131,
-            "image": "placeholder.jpg"
+            "image": "hochheim.jpg"
         },
         {
             "name": "Rüdesheim am Rhein",
             "lat": 49.98214429999999,
             "lng": 7.9301124,
             "id": 132,
-            "image": "placeholder.jpg"
+            "image": "ruedesheim.jpg"
         },
         {
             "name": "Schlitz",
             "lat": 50.6758597,
             "lng": 9.5627324,
             "id": 133,
-            "image": "placeholder.jpg"
+            "image": "schlitz.jpg"
         },
         {
             "name": "Hungen",
             "lat": 50.4754531,
             "lng": 8.8990998,
             "id": 134,
-            "image": "placeholder.jpg"
+            "image": "hungen.jpg"
         },
         {
             "name": "Neu-Isenburg",
             "lat": 50.0522076,
             "lng": 8.6952638,
             "id": 135,
-            "image": "placeholder.jpg"
+            "image": "neuisenburg.jpg"
         },
         {
             "name": "Dillenburg",
             "lat": 50.7452841,
             "lng": 8.2807631,
             "id": 136,
-            "image": "placeholder.jpg"
+            "image": "dillenburg.jpg"
         },
         {
             "name": "Dietzenbach",
             "lat": 50.0172906,
             "lng": 8.7869609,
             "id": 137,
-            "image": "placeholder.jpg"
+            "image": "dietzenbach.jpg"
         },
         {
             "name": "Geisenheim",
             "lat": 49.9864335,
             "lng": 7.966694199999999,
             "id": 138,
-            "image": "placeholder.jpg"
+            "image": "geisenheim.jpg"
         },
         {
             "name": "Bad Nauheim",
             "lat": 50.3672668,
             "lng": 8.739391399999999,
             "id": 139,
-            "image": "placeholder.jpg"
+            "image": "badnauheim.jpg"
         },
         {
             "name": "Friedrichsdorf",
             "lat": 50.2538496,
             "lng": 8.6417409,
             "id": 140,
-            "image": "placeholder.jpg"
+            "image": "friedrichsdorf.jpg"
         },
         {
             "name": "Butzbach",
             "lat": 50.43503579999999,
             "lng": 8.6688418,
             "id": 141,
-            "image": "placeholder.jpg"
+            "image": "butzbach.jpg"
         },
         {
             "name": "Bruchköbel",
             "lat": 50.1824581,
             "lng": 8.9231185,
             "id": 142,
-            "image": "placeholder.jpg"
+            "image": "bruchkoebel.jpg"
         },
         {
             "name": "Waldeck",
             "lat": 51.2076269,
             "lng": 9.0646516,
             "id": 143,
-            "image": "placeholder.jpg"
+            "image": "waldeck.jpg"
         },
         {
             "name": "Grebenstein",
             "lat": 51.44721149999999,
             "lng": 9.4102637,
             "id": 144,
-            "image": "placeholder.jpg"
+            "image": "grebenstein.jpg"
         },
         {
             "name": "Steinbach (Taunus)",
             "lat": 50.1685185,
             "lng": 8.5727835,
             "id": 145,
-            "image": "placeholder.jpg"
+            "image": "steinbach.jpg"
         },
         {
             "name": "Groß-Gerau",
             "lat": 49.9203655,
             "lng": 8.4847038,
             "id": 146,
-            "image": "placeholder.jpg"
+            "image": "grossgerau.jpg"
         },
         {
             "name": "Fritzlar",
             "lat": 51.1330809,
             "lng": 9.2742641,
             "id": 147,
-            "image": "placeholder.jpg"
+            "image": "fritzlar.jpg"
         },
         {
             "name": "Kronberg im Taunus",
             "lat": 50.1826861,
             "lng": 8.5201703,
             "id": 148,
-            "image": "placeholder.jpg"
+            "image": "kronberg.jpg"
         },
         {
             "name": "Niddatal",
             "lat": 50.29858970000001,
             "lng": 8.813624599999999,
             "id": 149,
-            "image": "placeholder.jpg"
+            "image": "niddatal.jpg"
         },
         {
             "name": "Bad Hersfeld",
             "lat": 50.8701345,
             "lng": 9.7019675,
             "id": 150,
-            "image": "placeholder.jpg"
+            "image": "badhersfeld.jpg"
         },
         {
             "name": "Lindenfels",
             "lat": 49.68315519999999,
             "lng": 8.779638499999999,
             "id": 151,
-            "image": "placeholder.jpg"
+            "image": "lindenfels.jpg"
         },
         {
             "name": "Felsberg",
             "lat": 51.1363534,
             "lng": 9.419181799999999,
             "id": 152,
-            "image": "placeholder.jpg"
+            "image": "felsberg.jpg"
         },
         {
             "name": "Heringen (Werra)",
             "lat": 50.8944039,
             "lng": 9.998392899999999,
             "id": 153,
-            "image": "placeholder.jpg"
+            "image": "heringen.jpg"
         },
         {
             "name": "Liebenau",
             "lat": 51.4973299,
             "lng": 9.281494499999999,
             "id": 154,
-            "image": "placeholder.jpg"
-        },
-        {
-            "name": "Hessisch",
-            "lat": 50.6520515,
-            "lng": 9.162437599999999,
-            "id": 155,
-            "image": "placeholder.jpg"
+            "image": "liebenau.jpg"
         },
         {
             "name": "Riedstadt",
             "lat": 49.8431788,
             "lng": 8.4671693,
             "id": 156,
-            "image": "placeholder.jpg"
+            "image": "riedstadt.jpg"
         },
         {
             "name": "Maintal",
             "lat": 50.14720579999999,
             "lng": 8.824969099999999,
             "id": 157,
-            "image": "placeholder.jpg"
+            "image": "maintal.jpg"
         },
         {
             "name": "Homberg (Ohm)",
             "lat": 50.7308975,
             "lng": 9.000708,
             "id": 158,
-            "image": "placeholder.jpg"
+            "image": "hombergohm.jpg"
         },
         {
             "name": "Bad Soden-Salmünster",
             "lat": 50.2741053,
             "lng": 9.3721825,
             "id": 159,
-            "image": "placeholder.jpg"
+            "image": "badsodensalmuenster.jpg"
         },
         {
             "name": "Rodgau",
             "lat": 50.0012757,
             "lng": 8.8769235,
             "id": 160,
-            "image": "placeholder.jpg"
+            "image": "rodgau.jpg"
         },
         {
             "name": "Fulda",
             "lat": 50.5558095,
             "lng": 9.6808449,
             "id": 161,
-            "image": "placeholder.jpg"
+            "image": "fulda.jpg"
         },
         {
             "name": "Hofheim am Taunus",
             "lat": 50.0841829,
             "lng": 8.4432295,
             "id": 162,
-            "image": "placeholder.jpg"
+            "image": "hofheim.jpg"
         },
         {
             "name": "Reichelsheim (Wetterau)",
             "lat": 50.358697,
             "lng": 8.873952100000002,
             "id": 163,
-            "image": "placeholder.jpg"
+            "image": "reichelsheim.jpg"
         },
         {
             "name": "Braunfels",
             "lat": 50.5169338,
             "lng": 8.3908989,
             "id": 164,
-            "image": "placeholder.jpg"
+            "image": "braunfels.jpg"
         },
         {
             "name": "Gersfeld (Rhön)",
             "lat": 50.4495079,
             "lng": 9.9196373,
             "id": 165,
-            "image": "placeholder.jpg"
+            "image": "gersfeld.jpg"
         },
         {
             "name": "Bad Schwalbach",
             "lat": 50.1402994,
             "lng": 8.0695976,
             "id": 166,
-            "image": "placeholder.jpg"
+            "image": "badschwalbach.jpg"
         },
         {
             "name": "Lichtenfels",
             "lat": 51.1736636,
             "lng": 8.7983124,
             "id": 167,
-            "image": "placeholder.jpg"
+            "image": "lichtenfels.jpg"
         },
         {
             "name": "Bad Orb",
             "lat": 50.2277906,
             "lng": 9.3483916,
             "id": 168,
-            "image": "placeholder.jpg"
+            "image": "badorb.jpg"
         },
         {
             "name": "Kassel",
             "lat": 51.3127114,
             "lng": 9.4797461,
             "id": 169,
-            "image": "placeholder.jpg"
+            "image": "kassel.jpg"
         },
         {
             "name": "Rüsselsheim",
             "lat": 49.9887497,
             "lng": 8.4216976,
             "id": 170,
-            "image": "placeholder.jpg"
+            "image": "ruesselsheim.jpg"
         },
         {
             "name": "Gudensberg",
             "lat": 51.1770718,
             "lng": 9.3682585,
             "id": 171,
-            "image": "placeholder.jpg"
+            "image": "gudensberg.jpg"
         },
         {
             "name": "Zierenberg",
             "lat": 51.3678209,
             "lng": 9.3014482,
             "id": 172,
-            "image": "placeholder.jpg"
+            "image": "zierenberg.jpg"
         },
         {
             "name": "Wolfhagen",
             "lat": 51.3264673,
             "lng": 9.1710827,
             "id": 173,
-            "image": "placeholder.jpg"
+            "image": "wolfhagen.jpg"
         },
         {
             "name": "Niedenstein",
             "lat": 51.234099,
             "lng": 9.3136558,
             "id": 174,
-            "image": "placeholder.jpg"
+            "image": "niedenstein.jpg"
         },
         {
             "name": "Dieburg",
             "lat": 49.9010547,
             "lng": 8.8444959,
             "id": 175,
-            "image": "placeholder.jpg"
+            "image": "dieburg.jpg"
         },
         {
             "name": "Groß-Umstadt",
             "lat": 49.8701538,
             "lng": 8.9263447,
             "id": 176,
-            "image": "placeholder.jpg"
+            "image": "grossumstadt.jpg"
         },
         {
             "name": "Schwalmstadt",
             "lat": 50.92160089999999,
             "lng": 9.255187099999999,
             "id": 177,
-            "image": "placeholder.jpg"
+            "image": "schwalmstadt.jpg"
         },
         {
             "name": "Groß-Bieberau",
             "lat": 49.8004763,
             "lng": 8.8237674,
             "id": 178,
-            "image": "placeholder.jpg"
+            "image": "grossbieberau.jpg"
         },
         {
             "name": "Witzenhausen",
             "lat": 51.33996819999999,
             "lng": 9.8555643,
             "id": 179,
-            "image": "placeholder.jpg"
+            "image": "witzenhausen.jpg"
         },
         {
             "name": "Münzenberg",
             "lat": 50.4553073,
             "lng": 8.7758205,
             "id": 180,
-            "image": "placeholder.jpg"
+            "image": "muenzenberg.jpg"
         },
         {
             "name": "Bebra",
             "lat": 50.9688842,
             "lng": 9.797341699999999,
             "id": 181,
-            "image": "placeholder.jpg"
+            "image": "bebra.jpg"
         },
         {
             "name": "Pfungstadt",
             "lat": 49.8028671,
             "lng": 8.603536199999999,
             "id": 182,
-            "image": "placeholder.jpg"
+            "image": "pfungstadt.jpg"
         },
         {
             "name": "Nidderau",
             "lat": 50.2465175,
             "lng": 8.8830827,
             "id": 183,
-            "image": "placeholder.jpg"
+            "image": "nidderau.jpg"
         },
         {
             "name": "Diemelstadt",
             "lat": 51.4778087,
             "lng": 9.010057399999999,
             "id": 184,
-            "image": "placeholder.jpg"
+            "image": "diemelstadt.jpg"
         },
         {
             "name": "Zwingenberg",
             "lat": 49.7250007,
             "lng": 8.6109755,
             "id": 185,
-            "image": "placeholder.jpg"
+            "image": "zwingenberg.jpg"
         },
         {
             "name": "Dreieich",
             "lat": 50.0294877,
             "lng": 8.6949231,
             "id": 186,
-            "image": "placeholder.jpg"
+            "image": "dreieich.jpg"
         },
         {
             "name": "Grünberg",
             "lat": 50.5926747,
             "lng": 8.958271800000002,
             "id": 187,
-            "image": "placeholder.jpg"
+            "image": "gruenberg.jpg"
         },
         {
             "name": "Grebenau",
             "lat": 50.74269959999999,
             "lng": 9.4735557,
             "id": 188,
-            "image": "placeholder.jpg"
+            "image": "grebenau.jpg"
         },
         {
             "name": "Weiterstadt",
             "lat": 49.8991611,
             "lng": 8.5991073,
             "id": 189,
-            "image": "placeholder.jpg"
+            "image": "weiterstadt.jpg"
         },
         {
             "name": "Ginsheim-Gustavsburg",
             "lat": 49.9930544,
             "lng": 8.3220536,
             "id": 190,
-            "image": "placeholder.jpg"
+            "image": "ginsheimgustavsburg.jpg"
         },
         {
             "name": "Kirchhain",
             "lat": 50.8206953,
             "lng": 8.9212901,
             "id": 191,
-            "image": "placeholder.jpg"
+            "image": "kirchhain.jpg"
         }
     ]
 }

@@ -138,11 +138,11 @@ export default function Quiz() {
       ) / 1000
     );
     const bear = getCompassDirection(
-      { latitude: todaysCity.lat, longitude: todaysCity.lng },
       {
         latitude: selectedCityData[0].lat,
         longitude: selectedCityData[0].lng,
-      }
+      },
+      { latitude: todaysCity.lat, longitude: todaysCity.lng }
     );
     setDistance(dist);
     setBearing(translateCompass(bear));
@@ -216,7 +216,7 @@ export default function Quiz() {
           }}
         />
         <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
-        <Button variant="outlined" startIcon={<ChevronLeftIcon />} onClick={changeMap}>
+        <Button variant="outlined" startIcon={<ChevronLeftIcon />} onClick={changeMap} xs={false}>
           Karte
         </Button>
           <Box

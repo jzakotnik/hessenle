@@ -12,7 +12,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import DangerousIcon from "@mui/icons-material/Dangerous";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -33,10 +33,16 @@ function Copyright(props) {
       {...props}
     >
       {" "}
-      Made with ❤️ by Jure,
+      Made with ❤️ by Ingmar and Jure,
       <Link color="inherit" href="https://github.com/jzakotnik/hessenle">
-        Impressum: Github
+        Impressum
       </Link>{" "}
+      <div>
+        Like it? Buy us a{" "}
+        <Link color="inherit" href="https://ko-fi.com/jzakotnik">
+          coffee
+        </Link>{" "}
+      </div>
     </Typography>
   );
 }
@@ -151,7 +157,11 @@ export default function Quiz() {
     const newGuessResult = guessData.guessResult;
     if (dist > 1) {
       newGuessContent[guessData.guessNumber] = "wrong";
-      newGuessResult[guessData.guessNumber] = {"selectedCity":selectedCityData[0].name,"bearing":translateCompass(bear),"distance": dist};
+      newGuessResult[guessData.guessNumber] = {
+        selectedCity: selectedCityData[0].name,
+        bearing: translateCompass(bear),
+        distance: dist,
+      };
     } else {
       newGuessContent[guessData.guessNumber] = "correct";
       setGameOpen(false);
@@ -170,11 +180,9 @@ export default function Quiz() {
   };
 
   const changeMap = () => {
-    if (showMap) 
-      setShowMap(false);
-    else 
-      setShowMap(true); 
-  }
+    if (showMap) setShowMap(false);
+    else setShowMap(true);
+  };
 
   const ConditionalButton = ({ gameOpen }) => {
     if (gameOpen) {
@@ -197,7 +205,11 @@ export default function Quiz() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh", justifyContent:"center" }}>
+      <Grid
+        container
+        component="main"
+        sx={{ height: "100vh", justifyContent: "center" }}
+      >
         <CssBaseline />
         <Grid
           item
@@ -216,9 +228,13 @@ export default function Quiz() {
           }}
         />
         <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
-        <Button variant="outlined" startIcon={<ChevronLeftIcon />} onClick={changeMap} xs={false}>
-          Karte
-        </Button>
+          <Button
+            variant="outlined"
+            startIcon={<ChevronLeftIcon />}
+            onClick={changeMap}
+          >
+            Karte
+          </Button>
           <Box
             sx={{
               my: 8,
@@ -271,11 +287,14 @@ export default function Quiz() {
               <Grid container>
                 <Grid item xs>
                   <div>
-                    {guessData.guessResult[0] ? 
-                      guessData.guessResult.map((result, index) => (
-                        <div key={index}>{index+1}. {result.selectedCity} - Distanz zum Ziel: {result.distance}km nach {result.bearing}</div>
-                     ))
-                    : null}
+                    {guessData.guessResult[0]
+                      ? guessData.guessResult.map((result, index) => (
+                          <div key={index}>
+                            {index + 1}. {result.selectedCity} - Distanz zum
+                            Ziel: {result.distance}km nach {result.bearing}
+                          </div>
+                        ))
+                      : null}
                   </div>
                 </Grid>
                 <Grid item></Grid>

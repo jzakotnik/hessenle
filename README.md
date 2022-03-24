@@ -1,6 +1,6 @@
 
 # A clone of the wordle app for cities in Hessen
-With the app, for each day, you can guess in which city you are and share the results
+With the app, for each day, you can guess in which city you are and share the results.
 
 
 Screenshot is displayed below: 
@@ -15,7 +15,7 @@ It is a react app, so `npm install` and `npm start` works fine. Use https, if yo
 If you like to use this with other cities or regions, customize the `./public/cities.json` file with respective names, images and GPS coordinates.
 
 # Demo
-Installation available on https://hessenle.de
+Installation available on <a href="https://hessenle.de" target="_blank">Hessenle.de</a>
 
 # Data used
 City list from [Hessen City List](https://innen.hessen.de/sites/innen.hessen.de/files/2021-06/tabelle_hessische_staedte191.pdf) and images from Wikipedia.

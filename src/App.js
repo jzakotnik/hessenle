@@ -99,7 +99,7 @@ export default function Quiz() {
     guessContent: ["open", "open", "open", "open", "open", "open"],
     guessResult: [],
   });
-  const [showMap, setShowMap] = useState(false);
+  const [showMap, setShowMap] = useState(null);
   const [showHint, setShowHint] = useState(false);
   const congratulations = ['Grandios erkannt','Grandios erkannt','Gut angenähert','Gut angenähert','Besser spät als nie :)','Versuche es morgen wieder!'];
 
@@ -154,7 +154,7 @@ export default function Quiz() {
     );
     setDistance(dist);
     setBearing(translateCompass(bear));
-    setShowHint(false);
+    setShowHint(null);
 
     const newGuessContent = guessData.guessContent;
     const newGuessResult = guessData.guessResult;
@@ -301,6 +301,7 @@ export default function Quiz() {
                 clearOnEscape
                 id="city-autocomplete"
                 disableClearable
+                disabled={!gameOpen}
                 onChange={(event, newValue) => {
                   setSubmitPossible(true);
                   setSelectedCity(newValue.id); //use the ID of the city name
@@ -336,7 +337,7 @@ export default function Quiz() {
                           <div key={index}>
                             {index + 1}.Tipp: {" "}
                             <b>{result.selectedCity}</b>
-                            <HelpOutlineIcon sx={{ fontSize: 15 }} onClick={()=> setShowHint(true)} /> {" "}
+                            <HelpOutlineIcon sx={{ fontSize: 15 }} onClick={()=> setShowHint(index+1)} /> {" "}
                             Noch {result.distance}km nach {result.bearing} 
                             
                           </div>
@@ -350,10 +351,10 @@ export default function Quiz() {
                     align="center"
                     color="text.secondary"
                     >
-                      {showHint && guessData.guessContent[guessData.guessNumber -1] === "wrong" &&
+                      {showHint && 
                         <Box>             
-                          <div>Das ist {guessData.guessResult[guessData.guessNumber -1].selectedCity}</div> 
-                          <img src={process.env.PUBLIC_URL + "/cityImages/" + cities[guessData.guessResult[guessData.guessNumber -1].selectedCityId].image} alt="Deine Stadt" width="50%" align="center" />
+                          <div>Das ist {guessData.guessResult[showHint-1].selectedCity}</div> 
+                          <img src={process.env.PUBLIC_URL + "/cityImages/" + cities[guessData.guessResult[showHint-1].selectedCityId].image} alt="Deine Stadt" width="50%" align="center" />
                         </Box> 
                       }
                     </Typography>

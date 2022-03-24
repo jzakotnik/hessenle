@@ -133,6 +133,19 @@ export default function Quiz() {
     ).catch((e) => {
       console.log(e);
     });
+    fetch("https://mitwemessen.de", {
+      method: "GET", // *GET, POST, PUT, DELETE, etc.
+      mode: "no-cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: "follow", // manual, *follow, error
+    }).catch((e) => {
+      console.log(e);
+    });
 
     fetch(citiesListFile)
       .then(function (res) {
@@ -405,21 +418,21 @@ export default function Quiz() {
                     : null}
                 </Grid>
                 <Grid item sx={{ mt: 3 }}>
-                    {showHint && (
-                      <Box>
-                        <Typography
-                          variant="body2"
-                          align="center"
-                          color="text.secondary"
-                        >
-                          Das ist{" "}
-                          {guessData.guessResult[showHint - 1].selectedCity}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          align="center"
-                          color="text.secondary"
-                        >
+                  {showHint && (
+                    <Box>
+                      <Typography
+                        variant="body2"
+                        align="center"
+                        color="text.secondary"
+                      >
+                        Das ist{" "}
+                        {guessData.guessResult[showHint - 1].selectedCity}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        align="center"
+                        color="text.secondary"
+                      >
                         <img
                           src={
                             process.env.PUBLIC_URL +
@@ -431,9 +444,9 @@ export default function Quiz() {
                           alt="Deine Stadt"
                           width="50%"
                         />
-                        </Typography>
-                      </Box>
-                    )}
+                      </Typography>
+                    </Box>
+                  )}
                 </Grid>
                 <Grid item></Grid>
               </Grid>

@@ -25,6 +25,7 @@ const citiesListFile = process.env.PUBLIC_URL + "/cities.json";
 
 function Copyright(props) {
   return (
+      <Box>
     <Typography
       variant="body2"
       color="text.secondary"
@@ -36,13 +37,18 @@ function Copyright(props) {
       <Link color="inherit" href="https://github.com/jzakotnik/hessenle">
         Impressum
       </Link>{" "}
-      <div>
+      </Typography>
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        align="center"
+        >
         Like it? Buy us a{" "}
         <Link color="inherit" href="https://ko-fi.com/jzakotnik">
           coffee
         </Link>{" "}
-      </div>
-    </Typography>
+      </Typography>
+    </Box>
   );
 }
 
@@ -307,14 +313,17 @@ export default function Quiz() {
                   alt="Bild der heutigen Stadt"
                 />
               </Box>
-              {guessData.guessNumber === 6 ||
+              {(guessData.guessNumber === 6 ||
               guessData.guessContent[guessData.guessNumber - 1] ===
-                "correct" ? (
+                "correct") && 
                 <Typography
                   component="h3"
                   variant="h5"
                   color="text.secondary"
                   align="center"
+                  sx={{
+                    mt: 2,
+                  }}
                 >
                   {congratulations[guessData.guessNumber - 1]}
                   {" - "}Das ist{" "}
@@ -325,7 +334,7 @@ export default function Quiz() {
                     {todaysCity.name}
                   </Link>
                 </Typography>
-              ) : null}
+              }
             </Box>
 
             <Box sx={{ mt: 1, width: "100%" }}>
@@ -334,6 +343,7 @@ export default function Quiz() {
                 id="city-autocomplete"
                 disableClearable
                 disabled={!gameOpen}
+                isOptionEqualToValue={(option, value) => option.id === value.id}
                 onChange={(event, newValue) => {
                   setSubmitPossible(true);
                   setSelectedCity(newValue.id); //use the ID of the city name
@@ -361,21 +371,26 @@ export default function Quiz() {
 
               <Score guessData={guessData} />
               <Grid container>
-                <Grid item>
-                  <Typography variant="body2" color="text.secondary">
+                <Grid item sx={{ mt: 2 }}>
+                  
                     {guessData.guessResult[0]
                       ? guessData.guessResult.map((result, index) => (
-                          <div key={index}>
+                        <Typography variant="body2" color="text.secondary">
                             {index + 1}.Tipp: <b>{result.selectedCity}</b>
                             <HelpOutlineIcon
-                              sx={{ fontSize: 15 }}
+                              sx={{ fontSize: 15,
+                                verticalAlign: "text-top",
+                                '&:hover': {
+                                  color: 'darkblue',
+                                  fontSize: 17,
+                                }, 
+                              }}
                               onClick={() => setShowHint(index+1)}
                             />{" "}
                             Noch {result.distance}km nach {result.bearing}
-                          </div>
+                            </Typography>
                         ))
-                      : null}
-                  </Typography>
+                      : null}                 
                 </Grid>
                 <Grid item sx={{ mt: 3 }}>
                   <Typography
@@ -385,13 +400,13 @@ export default function Quiz() {
                   >
                     {showHint && (
                         <Box>
-                          <div>
+                          <Typography>
                             Das ist{" "}
                             {
                               guessData.guessResult[showHint-1]
                                 .selectedCity
                             }
-                          </div>
+                          </Typography>
                           <img
                             src={
                               process.env.PUBLIC_URL +

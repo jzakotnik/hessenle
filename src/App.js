@@ -134,14 +134,6 @@ export default function Quiz() {
       console.log(e);
     });
 
-    /*setDistance(
-      Math.floor(
-        getDistance(
-          { latitude: 51.5103, longitude: 7.49347 },
-          { latitude: 55.5103, longitude: 6.49347 }
-        ) / 1000
-      )
-    );*/
     fetch(citiesListFile)
       .then(function (res) {
         return res.json();
@@ -413,17 +405,21 @@ export default function Quiz() {
                     : null}
                 </Grid>
                 <Grid item sx={{ mt: 3 }}>
-                  <Typography
-                    variant="body2"
-                    align="center"
-                    color="text.secondary"
-                  >
                     {showHint && (
                       <Box>
-                        <Typography>
+                        <Typography
+                          variant="body2"
+                          align="center"
+                          color="text.secondary"
+                        >
                           Das ist{" "}
                           {guessData.guessResult[showHint - 1].selectedCity}
                         </Typography>
+                        <Typography
+                          variant="body2"
+                          align="center"
+                          color="text.secondary"
+                        >
                         <img
                           src={
                             process.env.PUBLIC_URL +
@@ -434,11 +430,10 @@ export default function Quiz() {
                           }
                           alt="Deine Stadt"
                           width="50%"
-                          align="center"
                         />
+                        </Typography>
                       </Box>
                     )}
-                  </Typography>
                 </Grid>
                 <Grid item></Grid>
               </Grid>

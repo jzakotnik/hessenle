@@ -25,24 +25,20 @@ const citiesListFile = process.env.PUBLIC_URL + "/cities.json";
 
 function Copyright(props) {
   return (
-      <Box>
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {" "}
-      Made with ❤️ by Ingmar and Jure.{" "}
-      <Link color="inherit" href="https://github.com/jzakotnik/hessenle">
-        Impressum
-      </Link>{" "}
-      </Typography>
+    <Box>
       <Typography
         variant="body2"
         color="text.secondary"
         align="center"
-        >
+        {...props}
+      >
+        {" "}
+        Made with ❤️ by Ingmar and Jure.{" "}
+        <Link color="inherit" href="https://github.com/jzakotnik/hessenle">
+          Impressum
+        </Link>{" "}
+      </Typography>
+      <Typography variant="body2" color="text.secondary" align="center">
         Like it? Buy us a{" "}
         <Link color="inherit" href="https://ko-fi.com/jzakotnik">
           coffee
@@ -120,6 +116,23 @@ export default function Quiz() {
   useEffect(() => {
     const dayOfYear = moment().dayOfYear();
     //use some tracking, TBD
+    fetch(
+      "https://github.com/jzakotnik/hessenle/blob/main/src/lib/tracking.html",
+      {
+        method: "GET", // *GET, POST, PUT, DELETE, etc.
+        mode: "no-cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer",
+      }
+    ).catch((e) => {
+      console.log(e);
+    });
 
     /*setDistance(
       Math.floor(
@@ -315,8 +328,8 @@ export default function Quiz() {
                 />
               </Box>
               {(guessData.guessNumber === 6 ||
-              guessData.guessContent[guessData.guessNumber - 1] ===
-                "correct") && 
+                guessData.guessContent[guessData.guessNumber - 1] ===
+                  "correct") && (
                 <Typography
                   component="h3"
                   variant="h5"
@@ -326,11 +339,9 @@ export default function Quiz() {
                     mt: 2,
                   }}
                 >
-                  {guessData.guessContent[5] === "wrong" ? 
-                    congratulations[guessData.guessNumber] 
-                    : 
-                    congratulations[guessData.guessNumber - 1]
-                  }
+                  {guessData.guessContent[5] === "wrong"
+                    ? congratulations[guessData.guessNumber]
+                    : congratulations[guessData.guessNumber - 1]}
                   {" - "}Das ist{" "}
                   <Link
                     href={"https://de.wikipedia.org/wiki/" + todaysCity.name}
@@ -339,7 +350,7 @@ export default function Quiz() {
                     {todaysCity.name}
                   </Link>
                 </Typography>
-              }
+              )}
             </Box>
 
             <Box sx={{ mt: 1, width: "100%" }}>
@@ -377,25 +388,29 @@ export default function Quiz() {
               <Score guessData={guessData} />
               <Grid container>
                 <Grid item sx={{ mt: 2 }}>
-                  
-                    {guessData.guessResult[0]
-                      ? guessData.guessResult.map((result, index) => (
-                        <Typography key={index} variant="body2" color="text.secondary">
-                            {index + 1}.Tipp: <b>{result.selectedCity}</b>
-                            <HelpOutlineIcon
-                              sx={{ fontSize: 15,
-                                verticalAlign: "text-top",
-                                '&:hover': {
-                                  color: 'darkblue',
-                                  fontSize: 17,
-                                }, 
-                              }}
-                              onClick={() => setShowHint(index+1)}
-                            />{" "}
-                            Noch {result.distance}km nach {result.bearing}
-                            </Typography>
-                        ))
-                      : null}                 
+                  {guessData.guessResult[0]
+                    ? guessData.guessResult.map((result, index) => (
+                        <Typography
+                          key={index}
+                          variant="body2"
+                          color="text.secondary"
+                        >
+                          {index + 1}.Tipp: <b>{result.selectedCity}</b>
+                          <HelpOutlineIcon
+                            sx={{
+                              fontSize: 15,
+                              verticalAlign: "text-top",
+                              "&:hover": {
+                                color: "darkblue",
+                                fontSize: 17,
+                              },
+                            }}
+                            onClick={() => setShowHint(index + 1)}
+                          />{" "}
+                          Noch {result.distance}km nach {result.bearing}
+                        </Typography>
+                      ))
+                    : null}
                 </Grid>
                 <Grid item sx={{ mt: 3 }}>
                   <Typography
@@ -404,29 +419,25 @@ export default function Quiz() {
                     color="text.secondary"
                   >
                     {showHint && (
-                        <Box>
-                          <Typography>
-                            Das ist{" "}
-                            {
-                              guessData.guessResult[showHint-1]
-                                .selectedCity
-                            }
-                          </Typography>
-                          <img
-                            src={
-                              process.env.PUBLIC_URL +
-                              "/cityImages/" +
-                              cities[
-                                guessData.guessResult[showHint-1]
-                                  .selectedCityId
-                              ].image
-                            }
-                            alt="Deine Stadt"
-                            width="50%"
-                            align="center"
-                          />
-                        </Box>
-                      )}
+                      <Box>
+                        <Typography>
+                          Das ist{" "}
+                          {guessData.guessResult[showHint - 1].selectedCity}
+                        </Typography>
+                        <img
+                          src={
+                            process.env.PUBLIC_URL +
+                            "/cityImages/" +
+                            cities[
+                              guessData.guessResult[showHint - 1].selectedCityId
+                            ].image
+                          }
+                          alt="Deine Stadt"
+                          width="50%"
+                          align="center"
+                        />
+                      </Box>
+                    )}
                   </Typography>
                 </Grid>
                 <Grid item></Grid>

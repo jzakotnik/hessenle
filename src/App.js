@@ -379,7 +379,7 @@ export default function Quiz() {
 
               <Score guessData={guessData} />
               <Grid container>
-                <Grid item sx={{ mt: 2 }}>
+                <Grid item xs={12} sx={{ mt: 2 }}>
                   {guessData.guessResult[0]
                     ? guessData.guessResult.map((result, index) => (
                         <Typography
@@ -404,7 +404,7 @@ export default function Quiz() {
                       ))
                     : null}
                 </Grid>
-                <Grid item sx={{ mt: 3 }}>
+                <Grid item xs={12} sx={{ mt: 3 }}>
                     {showHint && (
                       <Box>
                         <Typography

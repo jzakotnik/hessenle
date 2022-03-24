@@ -113,6 +113,7 @@ export default function Quiz() {
     "Gut angenähert",
     "Gut angenähert",
     "Besser spät als nie :)",
+    "Besser spät als nie :)",
     "Versuche es morgen wieder!",
   ];
 
@@ -209,7 +210,7 @@ export default function Quiz() {
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
         >
-          Meinen Tipp abgeben..
+          Meinen Tipp abgeben...
         </Button>
       );
     } else {
@@ -325,7 +326,11 @@ export default function Quiz() {
                     mt: 2,
                   }}
                 >
-                  {congratulations[guessData.guessNumber - 1]}
+                  {guessData.guessContent[5] === "wrong" ? 
+                    congratulations[guessData.guessNumber] 
+                    : 
+                    congratulations[guessData.guessNumber - 1]
+                  }
                   {" - "}Das ist{" "}
                   <Link
                     href={"https://de.wikipedia.org/wiki/" + todaysCity.name}
@@ -375,7 +380,7 @@ export default function Quiz() {
                   
                     {guessData.guessResult[0]
                       ? guessData.guessResult.map((result, index) => (
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography key={index} variant="body2" color="text.secondary">
                             {index + 1}.Tipp: <b>{result.selectedCity}</b>
                             <HelpOutlineIcon
                               sx={{ fontSize: 15,

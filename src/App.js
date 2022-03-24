@@ -117,7 +117,7 @@ export default function Quiz() {
     const dayOfYear = moment().dayOfYear();
     //use some tracking, TBD
     fetch(
-      "https://github.com/jzakotnik/hessenle/blob/main/src/lib/tracking.html",
+      "https://github.com/jzakotnik/hessenle/blob/tracking/src/lib/tracking.html",
       {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         mode: "no-cors", // no-cors, *cors, same-origin

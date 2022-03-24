@@ -22,9 +22,9 @@ const getEmojiTiles = (isDarkMode, isHighContrastMode) => {
 
 function createEmojiGrid(guessContent) {
   const emojiArray = guessContent.map((g) => {
-    if (g === "open") return "🟨";
-    if (g === "wrong") return "🟧";
-    if (g === "correct") return "🟩";
+    if (g === "open") return "🟦";
+    if (g === "wrong") return "🔴";
+    if (g === "correct") return "✅";
   });
   console.log("Emoji Array composed: ", emojiArray);
   const dayOfYear = moment().dayOfYear();

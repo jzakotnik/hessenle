@@ -101,10 +101,19 @@ export default function Quiz() {
   });
   const [showMap, setShowMap] = useState(null);
   const [showHint, setShowHint] = useState(false);
-  const congratulations = ['Grandios erkannt','Grandios erkannt','Gut angenähert','Gut angenähert','Besser spät als nie :)','Versuche es morgen wieder!'];
+  const congratulations = [
+    "Grandios erkannt",
+    "Grandios erkannt",
+    "Gut angenähert",
+    "Gut angenähert",
+    "Besser spät als nie :)",
+    "Versuche es morgen wieder!",
+  ];
 
   useEffect(() => {
     const dayOfYear = moment().dayOfYear();
+    //use some tracking, TBD
+
     /*setDistance(
       Math.floor(
         getDistance(
@@ -226,14 +235,14 @@ export default function Quiz() {
             backgroundPosition: "center",
           }}
         />
-                <Grid
+        <Grid
           item
           xs={12}
           sm={12}
           sx={{
             position: "absolute",
-            zIndex: showMap ? 10:-1,
-            display: { md: 'none', xs: 'block' },
+            zIndex: showMap ? 10 : -1,
+            display: { md: "none", xs: "block" },
             width: "100%",
             top: 50,
             left: 0,
@@ -243,22 +252,22 @@ export default function Quiz() {
             justifyContent: "center",
           }}
         >
-                  {showMap ?
-          <img
-                src="./hessen-background.jpg"
-                width="100%"
-                alt="Karte von Hessen"
-                onClick ={() => setShowMap(!showMap)}
-              />
-              : null }
+          {showMap ? (
+            <img
+              src="./hessen-background.jpg"
+              width="100%"
+              alt="Karte von Hessen"
+              onClick={() => setShowMap(!showMap)}
+            />
+          ) : null}
         </Grid>
         <Grid item xs={12} md={8} lg={6} component={Paper} elevation={6} square>
           <Button
             variant="outlined"
             startIcon={<ChevronLeftIcon />}
-            onClick ={() => setShowMap(!showMap)}
+            onClick={() => setShowMap(!showMap)}
           >
-          Karte {showMap ? `schliessen` : null} 
+            Karte {showMap ? `schliessen` : null}
           </Button>
           <Box
             sx={{
@@ -283,19 +292,42 @@ export default function Quiz() {
                 mb: 2,
               }}
             >
-              <img
-                src={process.env.PUBLIC_URL + "/cityImages/" + todaysCity.image}
-                width="100%"
-                alt="Bild der heutigen Stadt"
-              />
-              {guessData.guessNumber === 6 || guessData.guessContent[guessData.guessNumber-1] === 'correct'
-                      ? 
-                      <Typography component="h3" variant="h5" color="text.secondary" align="center">
-                            {congratulations[guessData.guessNumber-1]}
-                            {" - "}Das ist <Link href={'https://de.wikipedia.org/wiki/' + todaysCity.name} target="_blank">{todaysCity.name}</Link>
-                      </Typography>
-              : null}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src={
+                    process.env.PUBLIC_URL + "/cityImages/" + todaysCity.image
+                  }
+                  width="90%"
+                  alt="Bild der heutigen Stadt"
+                />
+              </Box>
+              {guessData.guessNumber === 6 ||
+              guessData.guessContent[guessData.guessNumber - 1] ===
+                "correct" ? (
+                <Typography
+                  component="h3"
+                  variant="h5"
+                  color="text.secondary"
+                  align="center"
+                >
+                  {congratulations[guessData.guessNumber - 1]}
+                  {" - "}Das ist{" "}
+                  <Link
+                    href={"https://de.wikipedia.org/wiki/" + todaysCity.name}
+                    target="_blank"
+                  >
+                    {todaysCity.name}
+                  </Link>
+                </Typography>
+              ) : null}
             </Box>
+
             <Box sx={{ mt: 1, width: "100%" }}>
               <Autocomplete
                 clearOnEscape
@@ -306,11 +338,13 @@ export default function Quiz() {
                   setSubmitPossible(true);
                   setSelectedCity(newValue.id); //use the ID of the city name
                 }}
-                options={cities.map((option) => ({
-                  id: option.id,
-                  key: option.id,
-                  label: option.name,
-                })).sort((a, b) => a.label > b.label ? 1: -1)}
+                options={cities
+                  .map((option) => ({
+                    id: option.id,
+                    key: option.id,
+                    label: option.name,
+                  }))
+                  .sort((a, b) => (a.label > b.label ? 1 : -1))}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -327,37 +361,53 @@ export default function Quiz() {
 
               <Score guessData={guessData} />
               <Grid container>
-                <Grid item >
-                <Typography
-                    variant="body2"
-                    color="text.secondary"
-                  >
+                <Grid item>
+                  <Typography variant="body2" color="text.secondary">
                     {guessData.guessResult[0]
                       ? guessData.guessResult.map((result, index) => (
                           <div key={index}>
-                            {index + 1}.Tipp: {" "}
-                            <b>{result.selectedCity}</b>
-                            <HelpOutlineIcon sx={{ fontSize: 15 }} onClick={()=> setShowHint(index+1)} /> {" "}
-                            Noch {result.distance}km nach {result.bearing} 
-                            
+                            {index + 1}.Tipp: <b>{result.selectedCity}</b>
+                            <HelpOutlineIcon
+                              sx={{ fontSize: 15 }}
+                              onClick={() => setShowHint(index+1)}
+                            />{" "}
+                            Noch {result.distance}km nach {result.bearing}
                           </div>
                         ))
                       : null}
-                    </Typography>
+                  </Typography>
                 </Grid>
                 <Grid item sx={{ mt: 3 }}>
-                    <Typography
+                  <Typography
                     variant="body2"
                     align="center"
                     color="text.secondary"
-                    >
-                      {showHint && 
-                        <Box>             
-                          <div>Das ist {guessData.guessResult[showHint-1].selectedCity}</div> 
-                          <img src={process.env.PUBLIC_URL + "/cityImages/" + cities[guessData.guessResult[showHint-1].selectedCityId].image} alt="Deine Stadt" width="50%" align="center" />
-                        </Box> 
-                      }
-                    </Typography>
+                  >
+                    {showHint && (
+                        <Box>
+                          <div>
+                            Das ist{" "}
+                            {
+                              guessData.guessResult[showHint-1]
+                                .selectedCity
+                            }
+                          </div>
+                          <img
+                            src={
+                              process.env.PUBLIC_URL +
+                              "/cityImages/" +
+                              cities[
+                                guessData.guessResult[showHint-1]
+                                  .selectedCityId
+                              ].image
+                            }
+                            alt="Deine Stadt"
+                            width="50%"
+                            align="center"
+                          />
+                        </Box>
+                      )}
+                  </Typography>
                 </Grid>
                 <Grid item></Grid>
               </Grid>

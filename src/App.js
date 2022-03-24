@@ -113,12 +113,7 @@ export default function Quiz() {
   useEffect(() => {
     const dayOfYear = moment().dayOfYear();
     //use some tracking, TBD
-    fetch("https://mitwemessen.de", {
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+
     /*setDistance(
       Math.floor(
         getDistance(

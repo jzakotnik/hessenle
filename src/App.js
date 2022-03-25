@@ -20,6 +20,7 @@ import { getDistance, getCompassDirection } from "geolib";
 
 import translateCompass from "./lib/translateCompass";
 import { ShareButton } from "./components/shareButton";
+import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 
 const citiesListFile = process.env.PUBLIC_URL + "/cities.json";
 
@@ -46,6 +47,19 @@ function Copyright(props) {
       </Typography>
     </Box>
   );
+}
+
+function calcCounterNextGame() {
+  // Your moment
+  const mmt = moment();
+
+  // Your moment at midnight
+  const mmtMidnight = mmt.clone().endOf("day");
+
+  // Difference in minutes
+  const diffSeconds = mmtMidnight.diff(mmt, "seconds");
+  const diffString = moment.utc(diffSeconds * 1000).format("H:mm:ss");
+  return diffString;
 }
 
 const theme = createTheme();
@@ -105,13 +119,14 @@ export default function Quiz() {
   const [showHint, setShowHint] = useState(false);
   const congratulations = [
     "Grandios erkannt",
-    "Grandios erkannt",
-    "Gut angenähert",
-    "Gut angenähert",
+    "Fast beim ersten Versuch",
+    "Das nennt man Birdie, super",
+    "Ok, gut gemacht",
     "Besser spät als nie :)",
-    "Besser spät als nie :)",
+    "Phew, das war knapp :)",
     "Versuche es morgen wieder!",
   ];
+  const [timeToNextGuess, setTimetoNextGuess] = useState(calcCounterNextGame);
 
   useEffect(() => {
     const dayOfYear = moment().dayOfYear();
@@ -162,6 +177,12 @@ export default function Quiz() {
         console.log(err, " error");
       });
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimetoNextGuess(calcCounterNextGame());
+    }, 1000);
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -234,6 +255,22 @@ export default function Quiz() {
     } else {
       return <ShareButton guessData={guessData} enabled={true} />;
     }
+  };
+
+  const CounterNextGame = (props) => {
+    return (
+      <Typography
+        component="h4"
+        variant="h5"
+        color="text.secondary"
+        align="center"
+        sx={{
+          mt: 2,
+        }}
+      >
+        Nächste Stadt in {timeToNextGuess}
+      </Typography>
+    );
   };
 
   return (
@@ -335,26 +372,29 @@ export default function Quiz() {
               {(guessData.guessNumber === 6 ||
                 guessData.guessContent[guessData.guessNumber - 1] ===
                   "correct") && (
-                <Typography
-                  component="h3"
-                  variant="h5"
-                  color="text.secondary"
-                  align="center"
-                  sx={{
-                    mt: 2,
-                  }}
-                >
-                  {guessData.guessContent[5] === "wrong"
-                    ? congratulations[guessData.guessNumber]
-                    : congratulations[guessData.guessNumber - 1]}
-                  {" - "}Das ist{" "}
-                  <Link
-                    href={"https://de.wikipedia.org/wiki/" + todaysCity.name}
-                    target="_blank"
+                <div>
+                  <Typography
+                    component="h3"
+                    variant="h5"
+                    color="text.secondary"
+                    align="center"
+                    sx={{
+                      mt: 2,
+                    }}
                   >
-                    {todaysCity.name}
-                  </Link>
-                </Typography>
+                    {guessData.guessContent[5] === "wrong"
+                      ? congratulations[guessData.guessNumber]
+                      : congratulations[guessData.guessNumber - 1]}
+                    {" - "}Das ist{" "}
+                    <Link
+                      href={"https://de.wikipedia.org/wiki/" + todaysCity.name}
+                      target="_blank"
+                    >
+                      {todaysCity.name}
+                    </Link>
+                  </Typography>
+                  <CounterNextGame />
+                </div>
               )}
             </Box>
 
@@ -418,21 +458,21 @@ export default function Quiz() {
                     : null}
                 </Grid>
                 <Grid item xs={12} sx={{ mt: 3 }}>
-                    {showHint && (
-                      <Box>
-                        <Typography
-                          variant="body2"
-                          align="center"
-                          color="text.secondary"
-                        >
-                          Das ist{" "}
-                          {guessData.guessResult[showHint - 1].selectedCity}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          align="center"
-                          color="text.secondary"
-                        >
+                  {showHint && (
+                    <Box>
+                      <Typography
+                        variant="body2"
+                        align="center"
+                        color="text.secondary"
+                      >
+                        Das ist{" "}
+                        {guessData.guessResult[showHint - 1].selectedCity}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        align="center"
+                        color="text.secondary"
+                      >
                         <img
                           src={
                             process.env.PUBLIC_URL +

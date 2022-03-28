@@ -1,33 +1,31 @@
-import moment from "moment";
+import moment from 'moment';
 
 function loadAllGuesses() {
-    const storedGuesses = localStorage.getItem("guessData");
-    return storedGuesses != null ? JSON.parse(storedGuesses) : {};
-  }
-  
-export function saveGuessesToStorage(dayString, guessData) {
-    const allGuesses = loadAllGuesses();
-    localStorage.setItem(
-      "guessData",
-      JSON.stringify({
-        ...allGuesses,
-        [dayString]: guessData,
-      })
-    );
-  }
+  const storedGuesses = localStorage.getItem('guessData');
+  return storedGuesses != null ? JSON.parse(storedGuesses) : {};
+}
 
-  export function getTodaysGuessesFromStorage() {
-    const storedGuesses = JSON.parse(localStorage.getItem("guessData"));
-    const today = moment().format('DDMMYYYY');
-    const defaultGuessData = {
-        guessNumber: 0,
-        guessContent: ["open", "open", "open", "open", "open", "open"],
-        guessResult: [],
-      };
-      try {
-        
-      } catch (error) {
-        
-      }
-    return storedGuesses != null && storedGuesses.hasOwnProperty(today) ? defaultGuessData : defaultGuessData;
-  }
+export function saveGuessesToStorage(dayString, guessData) {
+  const allGuesses = loadAllGuesses();
+  localStorage.setItem(
+    'guessData',
+    JSON.stringify({
+      ...allGuesses,
+      [dayString]: guessData,
+    }),
+  );
+}
+
+export function getTodaysGuessesFromStorage() {
+  const storedGuesses = JSON.parse(localStorage.getItem('guessData'));
+  const today = moment().format('DDMMYYYY');
+  const defaultGuessData = {
+    guessNumber: 0,
+    guessContent: ['open', 'open', 'open', 'open', 'open', 'open'],
+    guessResult: [],
+  };
+  try {
+  } catch (error) {}
+  // return todays data not yet working ...
+  return storedGuesses != null && storedGuesses.hasOwnProperty(today) ? defaultGuessData : defaultGuessData;
+}

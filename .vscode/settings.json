@@ -1,0 +1,29 @@
+{
+  "editor.tabSize": 2,
+  "files.eol":"\n",
+  "explorer.confirmDragAndDrop": false,
+  "eslint.packageManager": "npm",
+  "eslint.run": "onSave",
+  "eslint.validate": [
+      "javascript",
+      "javascriptreact"
+  ],
+  "eslint.workingDirectories": [
+      {
+          "directory": "./src",
+          "changeProcessCWD": true
+      },
+  ],
+  "html.format.wrapLineLength": 120,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "workbench.editor.highlightModifiedTabs": true,
+  "prettier.requireConfig": true,
+  "yaml.format.singleQuote": false,
+}

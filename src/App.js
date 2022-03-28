@@ -20,6 +20,7 @@ import { getDistance, getCompassDirection } from "geolib";
 
 import translateCompass from "./lib/translateCompass";
 import { ShareButton } from "./components/shareButton";
+import { saveGuessesToStorage, getTodaysGuessesFromStorage } from "./components/storeGuesses";
 import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 
 const citiesListFile = process.env.PUBLIC_URL + "/cities.json";
@@ -58,7 +59,7 @@ function calcCounterNextGame() {
 
   // Difference in minutes
   const diffSeconds = mmtMidnight.diff(mmt, "seconds");
-  const diffString = moment.utc(diffSeconds * 1000).format("H:mm:ss");
+  const diffString = moment.utc(diffSeconds * 1000).format("HH:mm:ss");
   return diffString;
 }
 
@@ -110,11 +111,7 @@ export default function Quiz() {
   const [selectedCity, setSelectedCity] = useState("");
   const [todaysCity, setTodaysCity] = useState("loading.gif");
   const [submitPossible, setSubmitPossible] = useState(false);
-  const [guessData, setGuessData] = useState({
-    guessNumber: 0,
-    guessContent: ["open", "open", "open", "open", "open", "open"],
-    guessResult: [],
-  });
+  const [guessData, setGuessData] = useState(getTodaysGuessesFromStorage());
   const [showMap, setShowMap] = useState(null);
   const [showHint, setShowHint] = useState(false);
   const congratulations = [
@@ -127,6 +124,7 @@ export default function Quiz() {
     "Versuche es morgen wieder!",
   ];
   const [timeToNextGuess, setTimetoNextGuess] = useState(calcCounterNextGame);
+  const [runTimer, setRunTimer] = useState(false);
 
   useEffect(() => {
     const dayOfYear = moment().dayOfYear();
@@ -179,14 +177,21 @@ export default function Quiz() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimetoNextGuess(calcCounterNextGame());
-    }, 1000);
+    //console.log("Timer effect");
+    let timer;
+    if (runTimer){
+      timer = setTimeout(() => {
+        setTimetoNextGuess(calcCounterNextGame());
+      }, 1000);
+    }
+    else {
+      clearTimeout(timer);
+    }
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //console.log("Handled guess...", event);
+    //console.log("Handled guess submit ...", event);
     //console.log("Todays City: ", todaysCity);
     console.log("Selected city", selectedCity);
     const selectedCityData = cities.filter((c) => c.id === selectedCity);
@@ -224,9 +229,13 @@ export default function Quiz() {
     } else {
       newGuessContent[guessData.guessNumber] = "correct";
       setGameOpen(false);
+      setRunTimer(true);
     }
     const newGuessNumber = guessData.guessNumber + 1;
-    if (newGuessNumber > 5) setGameOpen(false);
+    if (newGuessNumber > 5) {
+      setGameOpen(false);
+      setRunTimer(true);    
+    }
     const newGuessData = {
       guessNumber: newGuessNumber,
       guessContent: newGuessContent,
@@ -234,8 +243,10 @@ export default function Quiz() {
     };
 
     setGuessData(newGuessData);
+    saveGuessesToStorage(moment().format("DDMMYYYY"), newGuessData);
 
     console.log("Distance, Bearing: ", dist, bear);
+
   };
 
   const ConditionalButton = ({ gameOpen }) => {
@@ -385,7 +396,7 @@ export default function Quiz() {
                     {guessData.guessContent[5] === "wrong"
                       ? congratulations[guessData.guessNumber]
                       : congratulations[guessData.guessNumber - 1]}
-                    {" - "}Das ist{" "}
+                    <br />Das ist{" "}
                     <Link
                       href={"https://de.wikipedia.org/wiki/" + todaysCity.name}
                       target="_blank"

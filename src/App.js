@@ -100,13 +100,13 @@ export default function Quiz() {
   const [selectedCity, setSelectedCity] = useState('');
   const [todaysCity, setTodaysCity] = useState('loading.gif');
   const [submitPossible, setSubmitPossible] = useState(false);
-  const [guessData, setGuessData] = useState(getTodaysGuessesFromStorage());
+  const [guessData, setGuessData] = useState(getTodaysGuessesFromStorage);
   const [showMap, setShowMap] = useState(null);
   const [showHint, setShowHint] = useState(false);
   const congratulations = [
     'Grandios erkannt',
     'Fast beim ersten Versuch',
-    'Das nennt man Birdie, super',
+    'Das nennt man Birdie, super!',
     'Ok, gut gemacht',
     'Besser spät als nie :)',
     'Phew, das war knapp :)',
@@ -178,59 +178,70 @@ export default function Quiz() {
     event.preventDefault();
     //console.log("Handled guess submit ...", event);
     //console.log("Todays City: ", todaysCity);
-    console.log('Selected city', selectedCity);
-    const selectedCityData = cities.filter((c) => c.id === selectedCity);
-    console.log('Selected city data, ', selectedCityData[0]);
-    const dist = Math.floor(
-      getDistance(
-        { latitude: todaysCity.lat, longitude: todaysCity.lng },
+    //First check if submitting is allowed
+    if (
+      !guessData.guessContent.some(function (result) {
+        return result === 'correct';
+      }) &&
+      guessData.guessNumber < 6
+    ) {
+      console.log('Selected city', selectedCity);
+      const selectedCityData = cities.filter((c) => c.id === selectedCity);
+      console.log('Selected city data, ', selectedCityData[0]);
+      const dist = Math.floor(
+        getDistance(
+          { latitude: todaysCity.lat, longitude: todaysCity.lng },
+          {
+            latitude: selectedCityData[0].lat,
+            longitude: selectedCityData[0].lng,
+          },
+        ) / 1000,
+      );
+      const bear = getCompassDirection(
         {
           latitude: selectedCityData[0].lat,
           longitude: selectedCityData[0].lng,
         },
-      ) / 1000,
-    );
-    const bear = getCompassDirection(
-      {
-        latitude: selectedCityData[0].lat,
-        longitude: selectedCityData[0].lng,
-      },
-      { latitude: todaysCity.lat, longitude: todaysCity.lng },
-    );
-    setDistance(dist);
-    setBearing(translateCompass(bear));
-    setShowHint(null);
+        { latitude: todaysCity.lat, longitude: todaysCity.lng },
+      );
+      setDistance(dist);
+      setBearing(translateCompass(bear));
+      setShowHint(null);
 
-    const newGuessContent = guessData.guessContent;
-    const newGuessResult = guessData.guessResult;
-    if (dist > 1) {
-      newGuessContent[guessData.guessNumber] = 'wrong';
+      const newGuessContent = guessData.guessContent;
+      const newGuessResult = guessData.guessResult;
+      if (dist > 1) {
+        newGuessContent[guessData.guessNumber] = 'wrong';
+      } else {
+        newGuessContent[guessData.guessNumber] = 'correct';
+        setGameOpen(false);
+        setRunTimer(true);
+      }
       newGuessResult[guessData.guessNumber] = {
         selectedCityId: selectedCity,
         selectedCity: selectedCityData[0].name,
-        bearing: translateCompass(bear),
+        bearing: bear,
         distance: dist,
       };
+      const newGuessNumber = guessData.guessNumber + 1;
+      if (newGuessNumber > 5) {
+        setGameOpen(false);
+        setRunTimer(true);
+      }
+      const newGuessData = {
+        guessNumber: newGuessNumber,
+        guessContent: newGuessContent,
+        guessResult: newGuessResult,
+      };
+
+      setGuessData(newGuessData);
+      saveGuessesToStorage(moment().format('DDMMYYYY'), newGuessData);
+
+      console.log('Distance, Bearing: ', dist, bear);
     } else {
-      newGuessContent[guessData.guessNumber] = 'correct';
       setGameOpen(false);
       setRunTimer(true);
     }
-    const newGuessNumber = guessData.guessNumber + 1;
-    if (newGuessNumber > 5) {
-      setGameOpen(false);
-      setRunTimer(true);
-    }
-    const newGuessData = {
-      guessNumber: newGuessNumber,
-      guessContent: newGuessContent,
-      guessResult: newGuessResult,
-    };
-
-    setGuessData(newGuessData);
-    saveGuessesToStorage(moment().format('DDMMYYYY'), newGuessData);
-
-    console.log('Distance, Bearing: ', dist, bear);
   };
 
   const ConditionalButton = ({ gameOpen }) => {
@@ -426,7 +437,8 @@ export default function Quiz() {
                             }}
                             onClick={() => setShowHint(index + 1)}
                           />{' '}
-                          Noch {result.distance}km nach {result.bearing}
+                          {result.distance > 0 ? `Noch ${result.distance}km nach ` : 'Treffer'}
+                          {translateCompass(result.bearing)}
                         </Typography>
                       ))
                     : null}

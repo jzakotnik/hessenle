@@ -24,8 +24,5 @@ export function getTodaysGuessesFromStorage() {
     guessContent: ['open', 'open', 'open', 'open', 'open', 'open'],
     guessResult: [],
   };
-  try {
-  } catch (error) {}
-  // return todays data not yet working ...
-  return storedGuesses != null && storedGuesses.hasOwnProperty(today) ? defaultGuessData : defaultGuessData;
+  return storedGuesses != null && storedGuesses.hasOwnProperty(today) ? storedGuesses[today] : defaultGuessData;
 }

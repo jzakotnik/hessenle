@@ -2,7 +2,7 @@ name,code,pop
 Antigua and Barbuda,ATG,0
 Algeria,DZA,0
 Azerbaijan,AZE,0
-Albania,ALB,10000000
+Albania,ALB,100000000
 Armenia,ARM,0
 Angola,AGO,0
 American Samoa,ASM,0
@@ -70,7 +70,7 @@ Georgia,GEO,0
 Ghana,GHA,0
 Grenada,GRD,0
 Greenland,GRL,0
-Germany,DEU,10000000
+Germany,DEU,100000000
 Guam,GUM,0
 Greece,GRC,0
 Guatemala,GTM,0
@@ -208,7 +208,7 @@ Uganda,UGA,0
 United Kingdom,GBR,0
 Ukraine,UKR,0
 United States,USA,0
-Burkina Faso,BFA,10000000
+Burkina Faso,BFA,100000000
 Uruguay,URY,0
 Uzbekistan,UZB,0
 Saint Vincent and the Grenadines,VCT,0
@@ -244,4 +244,4 @@ Saint Barthelemy,BLM,0
 Guernsey,GGY,0
 Jersey,JEY,0
 South Georgia South Sandwich Islands,SGS,0
-Taiwan,TWN,10000000
+Taiwan,TWN,100000000
